@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:linwood/widgets/home/drawer.dart';
+import 'package:linwood/widgets/home/scaffold.dart';
 import 'package:linwood/widgets/popupmenu.dart';
 
 class HomePage extends StatefulWidget {
@@ -39,12 +41,8 @@ class _HomePageState extends State<HomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
-          title: Text("Linwood"),
-          actions: <Widget>[LinwoodPopupMenu()]),
+    return HomeScaffold(
+      pageTitle: "Home",
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
