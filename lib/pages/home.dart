@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linwood/widgets/popupmenu.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -40,10 +41,10 @@ class _HomePageState extends State<HomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text("Linwood"),
-      ),
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text("Linwood"),
+          actions: <Widget>[LinwoodPopupMenu()]),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
