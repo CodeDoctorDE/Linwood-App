@@ -132,6 +132,10 @@ class _HomeDrawerState extends State<HomeDrawer> with RouteAware {
                                 scrollDirection: Axis.horizontal,
                                 children: [
                               IconButton(
+                                  icon: Icon(MdiIcons.helpCircleOutline),
+                                  onPressed: () {},
+                                  tooltip: "Wiki"),
+                              IconButton(
                                   icon: Icon(MdiIcons.informationOutline),
                                   onPressed: () {},
                                   tooltip: "Info"),
@@ -172,10 +176,26 @@ class _HomeDrawerState extends State<HomeDrawer> with RouteAware {
                           ]),
                     )),
                 ListTile(
-                  leading: const Icon(MdiIcons.home),
+                  leading: const Icon(MdiIcons.homeOutline),
                   title: const Text("Home"),
                   onTap: () async {
-                    await _navigateTo(context, RoutePages.home);
+                    await _replaceNavigateTo(context, RoutePages.home);
+                  },
+                  selected: _selectedRoute == RoutePages.home,
+                ),
+                ListTile(
+                  leading: const Icon(MdiIcons.accountMultipleOutline),
+                  title: const Text("Teams"),
+                  onTap: () async {
+                    await _replaceNavigateTo(context, RoutePages.home);
+                  },
+                  selected: _selectedRoute == RoutePages.home,
+                ),
+                ListTile(
+                  leading: const Icon(MdiIcons.forumOutline),
+                  title: const Text("Servers"),
+                  onTap: () async {
+                    await _replaceNavigateTo(context, RoutePages.home);
                   },
                   selected: _selectedRoute == RoutePages.home,
                 ),
@@ -185,7 +205,7 @@ class _HomeDrawerState extends State<HomeDrawer> with RouteAware {
           if (widget.permanentlyDisplay)
             const VerticalDivider(
               width: 5,
-              thickness: 0.3,
+              thickness: 0.5,
             )
         ],
       ),
@@ -195,10 +215,20 @@ class _HomeDrawerState extends State<HomeDrawer> with RouteAware {
   /// Closes the drawer if applicable (which is only when it's not been displayed permanently) and navigates to the specified route
   /// In a mobile layout, the a modal drawer is used so we need to explicitly close it when the user selects a page to display
   Future<void> _navigateTo(BuildContext context, String routeName) async {
-    if (widget.permanentlyDisplay) {
+    if (!widget.permanentlyDisplay) {
       Navigator.pop(context);
     }
     await Navigator.pushNamed(context, routeName);
+  }
+
+  /// Closes the drawer if applicable (which is only when it's not been displayed permanently) and navigates to the specified route
+  /// In a mobile layout, the a modal drawer is used so we need to explicitly close it when the user selects a page to display
+  Future<void> _replaceNavigateTo(
+      BuildContext context, String routeName) async {
+    if (!widget.permanentlyDisplay) {
+      Navigator.pop(context);
+    }
+    await Navigator.pushReplacementNamed(context, routeName);
   }
 
   void _updateSelectedRoute() {
