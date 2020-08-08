@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -96,7 +97,35 @@ class _SettingsPageState extends State<SettingsPage> {
                       ],
                     ),
                   ),
-                )
+                ),
+                Card(
+                    color: Theme.of(context).primaryColor,
+                    child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(children: [
+                          ListTile(
+                            title: Text("Impress",
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .subtitle1),
+                            trailing: Icon(MdiIcons.openInNew,
+                                color: Theme.of(context).primaryIconTheme.color,
+                                size: Theme.of(context).primaryIconTheme.size),
+                            onTap: () => launch("https://codedoctor.tk/impress",
+                                forceWebView: true),
+                          ),
+                          ListTile(
+                            title: Text("Privacy",
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .subtitle1),
+                            trailing: Icon(MdiIcons.openInNew,
+                                color: Theme.of(context).primaryIconTheme.color,
+                                size: Theme.of(context).primaryIconTheme.size),
+                            onTap: () => launch("https://codedoctor.tk/privacy",
+                                forceWebView: true),
+                          )
+                        ])))
               ],
             ),
           );
