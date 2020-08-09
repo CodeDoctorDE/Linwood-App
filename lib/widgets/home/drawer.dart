@@ -102,10 +102,9 @@ class _HomeDrawerState extends State<HomeDrawer> with RouteAware {
     //   ]))
     // ]));
     return Drawer(
-        child: Row(
-          children: [
+        child: Row(children: [
       Expanded(
-          child: ListView(padding: EdgeInsets.zero, children: [
+        child: ListView(padding: EdgeInsets.zero, children: [
           Container(
               height: 50,
               padding: EdgeInsets.zero,
@@ -204,12 +203,12 @@ class _HomeDrawerState extends State<HomeDrawer> with RouteAware {
             selected: _selectedRoute == RoutePages.notification,
           )
         ]),
-      )),
+      ),
       if (widget.permanentlyDisplay)
         const VerticalDivider(
-              width: 5,
-              thickness: 0.5,
-              )
+          width: 5,
+          thickness: 0.5,
+        )
     ]));
   }
 
