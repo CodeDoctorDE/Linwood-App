@@ -1,6 +1,7 @@
 class RoutePages {
   static const String home = '/';
-  static const String gallery = '/gallery';
-  static const String slideshow = '/slideshow';
+  static const String teams = '/teams';
+  static const String servers = '/servers';
+  static const String notification = '/notification';
   static const String settings = '/settings';
 }

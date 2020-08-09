@@ -9,10 +9,8 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  SheetController controller;
   @override
   void initState() {
-    controller = SheetController();
     super.initState();
   }
 
@@ -44,7 +42,6 @@ class _SettingsPageState extends State<SettingsPage> {
                                 context,
                                 builder: (context) {
                                   return SlidingSheetDialog(
-                                      controller: controller,
                                       elevation: 8,
                                       cornerRadius: 16,
                                       snapSpec: const SnapSpec(

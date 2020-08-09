@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:linwood/pages.dart';
 import 'package:linwood/pages/home.dart';
 import 'package:linwood/pages/settings.dart';
@@ -39,21 +38,6 @@ class MyApp extends StatelessWidget {
       },
       initialRoute: RoutePages.home,
     );
-  }
-}
-
-/// This class is used to build page transitions that don't have any animation
-class _InanimatePageTransitionsBuilder extends PageTransitionsBuilder {
-  const _InanimatePageTransitionsBuilder();
-
-  @override
-  Widget buildTransitions<T>(
-      PageRoute<T> route,
-      BuildContext context,
-      Animation<double> animation,
-      Animation<double> secondaryAnimation,
-      Widget child) {
-    return child;
   }
 }
 
