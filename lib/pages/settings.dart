@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:yaml/yaml.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -121,7 +124,25 @@ class _SettingsPageState extends State<SettingsPage> {
                                 size: Theme.of(context).primaryIconTheme.size),
                             onTap: () => launch("https://codedoctor.tk/privacy",
                                 forceWebView: true),
-                          )
+                          ),
+                          ListTile(
+                              title: Text("Information",
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .subtitle1),
+                              trailing: Icon(MdiIcons.informationOutline,
+                                  color:
+                                      Theme.of(context).primaryIconTheme.color,
+                                  size:
+                                      Theme.of(context).primaryIconTheme.size),
+                              onTap: () {
+                                showAboutDialog(
+                                    context: context,
+                                    applicationIcon: Image.asset(
+                                      "assets/icon.png",
+                                      height: 50,
+                                    ));
+                              })
                         ])))
               ],
             ),

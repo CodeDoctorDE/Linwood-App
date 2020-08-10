@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:linwood/pages.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../main.dart';
 
@@ -111,7 +112,9 @@ class _HomeDrawerState extends State<HomeDrawer> with RouteAware {
               margin: EdgeInsets.zero,
               decoration: BoxDecoration(
                   color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.circular(8.0),
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(8.0),
+                      bottomRight: Radius.circular(8.0)),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
@@ -130,12 +133,11 @@ class _HomeDrawerState extends State<HomeDrawer> with RouteAware {
                           children: [
                         IconButton(
                             icon: Icon(MdiIcons.helpCircleOutline),
-                            onPressed: () {},
+                            onPressed: () async {
+                              await launch("https://wiki.linwood.tk",
+                                  forceWebView: true);
+                            },
                             tooltip: "Wiki"),
-                        IconButton(
-                            icon: Icon(MdiIcons.informationOutline),
-                            onPressed: () {},
-                            tooltip: "Info"),
                         IconButton(
                             icon: Icon(MdiIcons.cogs),
                             onPressed: () async {
