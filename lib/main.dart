@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:linwood/pages.dart';
+import 'package:linwood/pages/guilds.dart';
 import 'package:linwood/pages/home.dart';
+import 'package:linwood/pages/notification.dart';
 import 'package:linwood/pages/settings.dart';
 
 void main() {
@@ -25,6 +27,7 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.green,
+        accentColor: Colors.orange,
 
         fontFamily: "Chilanka",
         // This makes the visual density adapt to the platform that you run
@@ -34,6 +37,8 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         RoutePages.home: (_) => HomePage(),
+        RoutePages.guilds: (_) => GuildsPage(),
+        RoutePages.notification: (_) => NotificationPage(),
         RoutePages.settings: (_) => SettingsPage()
       },
       initialRoute: RoutePages.home,

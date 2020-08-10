@@ -8,8 +8,10 @@ class HomeScaffold extends StatelessWidget {
       {@required this.body,
       @required this.pageTitle,
       Key key,
-      this.floatingActionButton})
+      this.floatingActionButton,
+      this.actions})
       : super(key: key);
+  final List<Widget> actions;
 
   final Widget body;
   final FloatingActionButton floatingActionButton;
@@ -31,6 +33,7 @@ class HomeScaffold extends StatelessWidget {
               // when the app isn't displaying the mobile version of app, hide the menu button that is used to open the navigation drawer
               automaticallyImplyLeading: displayMobileLayout,
               title: Text(pageTitle),
+              actions: actions,
             ),
             drawer: displayMobileLayout
                 ? const HomeDrawer(

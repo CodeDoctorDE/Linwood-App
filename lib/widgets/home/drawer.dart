@@ -190,11 +190,11 @@ class _HomeDrawerState extends State<HomeDrawer> with RouteAware {
           ),
           ListTile(
             leading: const Icon(MdiIcons.forumOutline),
-            title: const Text("Servers"),
+            title: const Text("Guilds"),
             onTap: () async {
-              await _replaceNavigateTo(context, RoutePages.servers);
+              await _replaceNavigateTo(context, RoutePages.guilds);
             },
-            selected: _selectedRoute == RoutePages.servers,
+            selected: _selectedRoute == RoutePages.guilds,
           ),
           ListTile(
             leading: const Icon(MdiIcons.forumOutline),
