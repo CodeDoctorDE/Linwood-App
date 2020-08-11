@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:linwood/pages.dart';
+import 'package:linwood/pages/guild/teams.dart';
 import 'package:linwood/pages/guilds.dart';
 import 'package:linwood/pages/home.dart';
 import 'package:linwood/pages/notification.dart';
 import 'package:linwood/pages/settings.dart';
+
+import 'pages/guild/home.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,8 +40,10 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         RoutePages.home: (_) => HomePage(),
+        RoutePages.guild: (_) => GuildPage(),
         RoutePages.guilds: (_) => GuildsPage(),
         RoutePages.notification: (_) => NotificationPage(),
+        RoutePages.teams: (_) => TeamsPage(),
         RoutePages.settings: (_) => SettingsPage()
       },
       initialRoute: RoutePages.home,

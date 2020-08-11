@@ -5,16 +5,16 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../main.dart';
 
-class HomeDrawer extends StatefulWidget {
-  const HomeDrawer({@required this.permanentlyDisplay, Key key})
+class GuildDrawer extends StatefulWidget {
+  const GuildDrawer({@required this.permanentlyDisplay, Key key})
       : super(key: key);
 
   final bool permanentlyDisplay;
   @override
-  _HomeDrawerState createState() => _HomeDrawerState();
+  _GuildDrawerState createState() => _GuildDrawerState();
 }
 
-class _HomeDrawerState extends State<HomeDrawer> with RouteAware {
+class _GuildDrawerState extends State<GuildDrawer> with RouteAware {
   String _selectedRoute;
   AppRouteObserver _routeObserver;
   @override
@@ -106,59 +106,27 @@ class _HomeDrawerState extends State<HomeDrawer> with RouteAware {
         child: Row(children: [
       Expanded(
         child: ListView(padding: EdgeInsets.zero, children: [
-          Container(
-              height: 50,
-              padding: EdgeInsets.zero,
-              margin: EdgeInsets.zero,
-              decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(8.0),
-                      bottomRight: Radius.circular(8.0)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: Offset(0, 3), // changes position of shadow
-                    )
-                  ]),
-              child: IconTheme(
-                  data: Theme.of(context).primaryIconTheme,
-                  child: Center(
-                      child: ListView(
-                          shrinkWrap: true,
-                          padding: EdgeInsets.zero,
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                        IconButton(
-                            icon: Icon(MdiIcons.helpCircleOutline),
-                            onPressed: () async {
-                              await launch("https://wiki.linwood.tk",
-                                  forceWebView: true);
-                            },
-                            tooltip: "Wiki"),
-                        IconButton(
-                            icon: Icon(MdiIcons.cogs),
-                            onPressed: () async {
-                              await _navigateTo(context, RoutePages.settings);
-                            },
-                            tooltip: "Settings"),
-                        IconButton(
-                            icon: Icon(MdiIcons.logout),
-                            onPressed: () {},
-                            tooltip: "Logout"),
-                      ])))),
+          FlatButton.icon(
+            color: Theme.of(context).primaryColor,
+            textTheme: ButtonTextTheme.primary,
+            icon: Icon(MdiIcons.keyboardBackspace),
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            onPressed: () {
+              if (!widget.permanentlyDisplay) Navigator.pop(context);
+              Navigator.of(context).pop();
+            },
+            label: Text("Back"),
+          ),
           Container(
               padding: EdgeInsets.zero,
               margin: EdgeInsets.zero,
-              height: 350,
+              height: 250,
               child: DrawerHeader(
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                     SizedBox(
-                      height: 50,
+                      height: 20,
                     ),
                     Image.asset(
                       "assets/icon.png",
@@ -167,35 +135,60 @@ class _HomeDrawerState extends State<HomeDrawer> with RouteAware {
                     SizedBox(
                       height: 50,
                     ),
-                    Text("Linwood",
+                    Text("GuildTitle",
                         style: Theme.of(context).textTheme.headline5),
-                    Text("Open source discord bot platform",
-                        style: Theme.of(context).textTheme.subtitle2),
+                    RichText(
+                      text: TextSpan(
+                        style: Theme.of(context).textTheme.bodyText2,
+                        children: <TextSpan>[
+                          TextSpan(
+                              text: 'Plan: ',
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                          TextSpan(text: 'Community'),
+                        ],
+                      ),
+                    )
                   ]))),
           ListTile(
             leading: const Icon(MdiIcons.homeOutline),
             title: const Text("Home"),
             onTap: () async {
-              await _replaceNavigateTo(context, RoutePages.home);
+              await _replaceNavigateTo(context, RoutePages.guild);
             },
-            selected: _selectedRoute == RoutePages.home,
+            selected: _selectedRoute == RoutePages.guild,
           ),
           ListTile(
-            leading: const Icon(MdiIcons.forumOutline),
-            title: const Text("Guilds"),
+            leading: const Icon(MdiIcons.accountMultipleOutline),
+            title: const Text("Teams"),
+            onTap: () async {
+              await _replaceNavigateTo(context, RoutePages.teams);
+            },
+            selected: _selectedRoute == RoutePages.teams,
+          ),
+          ListTile(
+            leading: const Icon(MdiIcons.podium),
+            title: const Text("Leaderboard"),
+            onTap: () async {
+              await _replaceNavigateTo(context, RoutePages.notification);
+            },
+            selected: _selectedRoute == RoutePages.notification,
+          ),
+          ListTile(
+            leading: const Icon(MdiIcons.tune),
+            title: const Text("Options"),
             onTap: () async {
               await _replaceNavigateTo(context, RoutePages.guilds);
             },
             selected: _selectedRoute == RoutePages.guilds,
           ),
           ListTile(
-            leading: const Icon(MdiIcons.forumOutline),
-            title: const Text("Notification"),
+            leading: const Icon(MdiIcons.cogs),
+            title: const Text("Settings"),
             onTap: () async {
-              await _replaceNavigateTo(context, RoutePages.notification);
+              await _replaceNavigateTo(context, RoutePages.guilds);
             },
-            selected: _selectedRoute == RoutePages.notification,
-          )
+            selected: _selectedRoute == RoutePages.guilds,
+          ),
         ]),
       ),
       if (widget.permanentlyDisplay)

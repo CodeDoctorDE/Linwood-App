@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linwood/pages.dart';
 import 'package:linwood/services/guild.dart';
 import 'package:linwood/widgets/home/scaffold.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -43,7 +44,8 @@ class GuildsPage extends StatelessWidget {
                               Text(guild.name),
                               (guild.added)
                                   ? RaisedButton.icon(
-                                      onPressed: () {},
+                                      onPressed: () => Navigator.of(context)
+                                          .pushNamed(RoutePages.guild),
                                       icon: Icon(MdiIcons.viewDashboardOutline),
                                       label: Text("Manage"))
                                   : RaisedButton.icon(
