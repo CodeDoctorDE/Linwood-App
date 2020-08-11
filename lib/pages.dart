@@ -5,4 +5,5 @@ class RoutePages {
   static const String guilds = '/guilds';
   static const String notification = '/notification';
   static const String settings = '/settings';
+  static const String adminSettings = '/admin/settings';
 }

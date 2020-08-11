@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:linwood/pages.dart';
-import 'package:linwood/pages/guild/teams.dart';
+import 'package:linwood/pages/guild/admin/settings.dart';
+import 'package:linwood/pages/guild/admin/teams.dart';
 import 'package:linwood/pages/guilds.dart';
 import 'package:linwood/pages/home.dart';
 import 'package:linwood/pages/notification.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
       routes: {
         RoutePages.home: (_) => HomePage(),
         RoutePages.guild: (_) => GuildPage(),
+        RoutePages.adminSettings: (_) => AdminSettingsPage(),
         RoutePages.guilds: (_) => GuildsPage(),
         RoutePages.notification: (_) => NotificationPage(),
         RoutePages.teams: (_) => TeamsPage(),

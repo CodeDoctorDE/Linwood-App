@@ -35,11 +35,13 @@ class GuildsPage extends StatelessWidget {
                           child: Column(
                             children: [
                               if (guild.icon != null)
-                                Image.network(
-                                  guild.icon,
-                                  fit: BoxFit.cover,
-                                  height: 120,
-                                ),
+                                Opacity(
+                                    opacity: guild.added ? 1 : 0.3,
+                                    child: Image.network(
+                                      guild.icon,
+                                      fit: BoxFit.cover,
+                                      height: 120,
+                                    )),
                               SizedBox(height: 10),
                               Text(guild.name),
                               (guild.added)

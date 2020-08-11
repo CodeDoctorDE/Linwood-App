@@ -9,6 +9,7 @@ class GuildScaffold extends StatelessWidget {
       @required this.pageTitle,
       Key key,
       this.floatingActionButton,
+      this.bottom,
       this.actions})
       : super(key: key);
   final List<Widget> actions;
@@ -16,6 +17,7 @@ class GuildScaffold extends StatelessWidget {
   final Widget body;
   final FloatingActionButton floatingActionButton;
 
+  final PreferredSizeWidget bottom;
   final String pageTitle;
 
   @override
@@ -34,6 +36,7 @@ class GuildScaffold extends StatelessWidget {
               automaticallyImplyLeading: displayMobileLayout,
               title: Text(pageTitle),
               actions: actions,
+              bottom: bottom,
             ),
             drawer: displayMobileLayout
                 ? const GuildDrawer(

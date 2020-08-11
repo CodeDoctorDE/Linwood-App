@@ -47,6 +47,8 @@ class _GuildDrawerState extends State<GuildDrawer> with RouteAware {
     super.didPop();
   }
 
+  bool admin = true;
+
   @override
   Widget build(BuildContext context) {
     // return Drawer(
@@ -105,92 +107,131 @@ class _GuildDrawerState extends State<GuildDrawer> with RouteAware {
     return Drawer(
         child: Row(children: [
       Expanded(
-        child: ListView(padding: EdgeInsets.zero, children: [
-          FlatButton.icon(
-            color: Theme.of(context).primaryColor,
-            textTheme: ButtonTextTheme.primary,
-            icon: Icon(MdiIcons.keyboardBackspace),
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            onPressed: () {
-              if (!widget.permanentlyDisplay) Navigator.pop(context);
-              Navigator.of(context).pop();
-            },
-            label: Text("Back"),
-          ),
-          Container(
-              padding: EdgeInsets.zero,
-              margin: EdgeInsets.zero,
-              height: 250,
-              child: DrawerHeader(
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                    SizedBox(
-                      height: 20,
+          child: ListView(padding: EdgeInsets.zero, children: [
+        FlatButton.icon(
+          color: Theme.of(context).primaryColor,
+          textTheme: ButtonTextTheme.primary,
+          icon: Icon(MdiIcons.keyboardBackspace),
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          onPressed: () {
+            if (!widget.permanentlyDisplay) Navigator.pop(context);
+            Navigator.of(context).pop();
+          },
+          label: Text("Back"),
+        ),
+        Container(
+            padding: EdgeInsets.zero,
+            margin: EdgeInsets.zero,
+            height: 250,
+            child: DrawerHeader(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Image.asset(
+                    "assets/icon.png",
+                    height: 70,
+                  ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Text("GuildTitle",
+                      style: Theme.of(context).textTheme.headline5),
+                  RichText(
+                    text: TextSpan(
+                      style: Theme.of(context).textTheme.bodyText2,
+                      children: <TextSpan>[
+                        TextSpan(
+                            text: 'Plan: ',
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        TextSpan(text: 'Community'),
+                      ],
                     ),
-                    Image.asset(
-                      "assets/icon.png",
-                      height: 70,
+                  )
+                ]))),
+        ExpansionTile(
+          initiallyExpanded: true,
+          title: Text('User'),
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    ListTile(
+                      leading: const Icon(MdiIcons.homeOutline),
+                      title: const Text("Home"),
+                      onTap: () async {
+                        await _replaceNavigateTo(context, RoutePages.guild);
+                      },
+                      selected: _selectedRoute == RoutePages.guild,
                     ),
-                    SizedBox(
-                      height: 50,
+                    ListTile(
+                      leading: const Icon(MdiIcons.podium),
+                      title: const Text("Karma"),
+                      onTap: () async {
+                        await _replaceNavigateTo(
+                            context, RoutePages.notification);
+                      },
+                      selected: _selectedRoute == RoutePages.notification,
                     ),
-                    Text("GuildTitle",
-                        style: Theme.of(context).textTheme.headline5),
-                    RichText(
-                      text: TextSpan(
-                        style: Theme.of(context).textTheme.bodyText2,
-                        children: <TextSpan>[
-                          TextSpan(
-                              text: 'Plan: ',
-                              style: TextStyle(fontWeight: FontWeight.bold)),
-                          TextSpan(text: 'Community'),
-                        ],
-                      ),
-                    )
-                  ]))),
-          ListTile(
-            leading: const Icon(MdiIcons.homeOutline),
-            title: const Text("Home"),
-            onTap: () async {
-              await _replaceNavigateTo(context, RoutePages.guild);
-            },
-            selected: _selectedRoute == RoutePages.guild,
-          ),
-          ListTile(
-            leading: const Icon(MdiIcons.accountMultipleOutline),
-            title: const Text("Teams"),
-            onTap: () async {
-              await _replaceNavigateTo(context, RoutePages.teams);
-            },
-            selected: _selectedRoute == RoutePages.teams,
-          ),
-          ListTile(
-            leading: const Icon(MdiIcons.podium),
-            title: const Text("Leaderboard"),
-            onTap: () async {
-              await _replaceNavigateTo(context, RoutePages.notification);
-            },
-            selected: _selectedRoute == RoutePages.notification,
-          ),
-          ListTile(
-            leading: const Icon(MdiIcons.tune),
-            title: const Text("Options"),
-            onTap: () async {
-              await _replaceNavigateTo(context, RoutePages.guilds);
-            },
-            selected: _selectedRoute == RoutePages.guilds,
-          ),
-          ListTile(
-            leading: const Icon(MdiIcons.cogs),
-            title: const Text("Settings"),
-            onTap: () async {
-              await _replaceNavigateTo(context, RoutePages.guilds);
-            },
-            selected: _selectedRoute == RoutePages.guilds,
-          ),
-        ]),
-      ),
+                    ListTile(
+                      leading: const Icon(MdiIcons.tune),
+                      title: const Text("Settings"),
+                      onTap: () async {
+                        await _replaceNavigateTo(context, RoutePages.guilds);
+                      },
+                      selected: _selectedRoute == RoutePages.guilds,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+        IgnorePointer(
+            ignoring: !admin,
+            child: Opacity(
+                opacity: admin ? 1 : 0.3,
+                child: ExpansionTile(
+                    title: Text('Admin'),
+                    initiallyExpanded: admin,
+                    children: <Widget>[
+                      Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Align(
+                              alignment: Alignment.topLeft,
+                              child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    ListTile(
+                                      leading: const Icon(
+                                          MdiIcons.accountMultipleOutline),
+                                      title: const Text("Teams"),
+                                      onTap: () async {
+                                        await _replaceNavigateTo(
+                                            context, RoutePages.teams);
+                                      },
+                                      selected:
+                                          _selectedRoute == RoutePages.teams,
+                                    ),
+                                    ListTile(
+                                      leading: const Icon(MdiIcons.cogs),
+                                      title: const Text("Settings"),
+                                      onTap: () async {
+                                        await _replaceNavigateTo(
+                                            context, RoutePages.adminSettings);
+                                      },
+                                      selected: _selectedRoute ==
+                                          RoutePages.adminSettings,
+                                    )
+                                  ])))
+                    ])))
+      ])),
       if (widget.permanentlyDisplay)
         const VerticalDivider(
           width: 5,
