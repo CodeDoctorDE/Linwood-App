@@ -189,7 +189,7 @@ class _HomeDrawerState extends State<HomeDrawer> with RouteAware {
             selected: _selectedRoute == RoutePages.guilds,
           ),
           ListTile(
-            leading: const Icon(MdiIcons.forumOutline),
+            leading: const Icon(MdiIcons.bellOutline),
             title: const Text("Notification"),
             onTap: () async {
               await _replaceNavigateTo(context, RoutePages.notification);

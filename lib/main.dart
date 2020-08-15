@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:linwood/pages.dart';
 import 'package:linwood/pages/guild/admin/settings.dart';
 import 'package:linwood/pages/guild/admin/teams.dart';
@@ -6,11 +7,13 @@ import 'package:linwood/pages/guilds.dart';
 import 'package:linwood/pages/home.dart';
 import 'package:linwood/pages/notification.dart';
 import 'package:linwood/pages/settings.dart';
+import 'package:linwood/services/api_service.dart';
 
 import 'pages/guild/home.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  GetIt.I.registerSingleton(ApiService());
   runApp(MyApp());
 }
 

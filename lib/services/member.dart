@@ -1,4 +1,7 @@
+import 'package:get_it/get_it.dart';
 import 'package:linwood/services/guild.dart';
+
+import 'api_service.dart';
 
 class Member {
   final String name;
@@ -28,6 +31,9 @@ class Member {
   int get level {
     return likes;
   }
+  Guild get guild {
+    return GetIt.I.get<ApiService>().getGuild(guildId);
+  }
 
   factory Member.fromJson(Map<String, dynamic> json) {
     return Member(
@@ -37,6 +43,7 @@ class Member {
         likes: json['likes'],
         dislikes: json['dislikes'],
         points: json['points'],
+        guildId: json['guildId']],
         role: json['role']);
   }
 }

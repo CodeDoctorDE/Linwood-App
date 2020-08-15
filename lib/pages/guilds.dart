@@ -23,9 +23,12 @@ class GuildsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return HomeScaffold(
         body: Container(
+            alignment: Alignment.topCenter,
             margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
             child: SingleChildScrollView(
               child: Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                alignment: WrapAlignment.center,
                 children: List.generate(guilds.length, (index) {
                   var guild = guilds[index];
                   return Card(
