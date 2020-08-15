@@ -39,6 +39,10 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      darkTheme: ThemeData(
+          brightness: Brightness.dark,
+          primarySwatch: Colors.green,
+          accentColor: Colors.orange),
       routes: {
         RoutePages.home: (_) => HomePage(),
         RoutePages.guild: (_) => GuildPage(),
