@@ -3,7 +3,7 @@ import 'package:linwood/services/team.dart';
 import 'package:linwood/widgets/guild/scaffold.dart';
 
 class TeamsPage extends StatelessWidget {
-  List<Team> teams = [
+  final List<Team> teams = [
     Team(
         id: "0908",
         name: "Test Team",

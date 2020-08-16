@@ -14,7 +14,7 @@ class KarmaCard extends StatelessWidget {
             children: [
               Text(member.level.toString()),
               LinearProgressIndicator(),
-              Text(member.karma)
+              Text(member.karma.toString())
             ],
           )
         ],

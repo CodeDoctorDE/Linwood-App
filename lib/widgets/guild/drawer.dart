@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linwood/pages.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../main.dart';
 
@@ -238,13 +237,6 @@ class _GuildDrawerState extends State<GuildDrawer> with RouteAware {
           thickness: 0.5,
         )
     ]));
-  }
-
-  /// Closes the drawer if applicable (which is only when it's not been displayed permanently) and navigates to the specified route
-  /// In a mobile layout, the a modal drawer is used so we need to explicitly close it when the user selects a page to display
-  Future<void> _navigateTo(BuildContext context, String routeName) async {
-    if (!widget.permanentlyDisplay) Navigator.pop(context);
-    await Navigator.pushNamed(context, routeName);
   }
 
   /// Closes the drawer if applicable (which is only when it's not been displayed permanently) and navigates to the specified route

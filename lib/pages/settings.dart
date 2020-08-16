@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sliding_sheet/sliding_sheet.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../theme.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -24,77 +26,18 @@ class _SettingsPageState extends State<SettingsPage> {
             child: ListView(
               children: [
                 Card(
-                  color: Theme.of(context).primaryColor,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        ListTile(
-                            title: Text("Theme",
-                                style: Theme.of(context)
-                                    .primaryTextTheme
-                                    .subtitle1),
-                            trailing: Icon(MdiIcons.chevronRight,
-                                color: Theme.of(context).primaryIconTheme.color,
-                                size: Theme.of(context).primaryIconTheme.size),
-                            onTap: () async {
-                              await showSlidingBottomSheet(
-                                context,
-                                builder: (context) {
-                                  return SlidingSheetDialog(
-                                      elevation: 8,
-                                      cornerRadius: 16,
-                                      snapSpec: const SnapSpec(
-                                        snap: true,
-                                        snappings: [0.4, 0.7, 1.0],
-                                        positioning: SnapPositioning
-                                            .relativeToAvailableSpace,
-                                      ),
-                                      builder: (context, state) {
-                                        return Material(
-                                            child: Container(
-                                                child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    children: [
-                                              Padding(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 5,
-                                                    vertical: 10),
-                                                child: Text(
-                                                  "Theme",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headline5,
-                                                ),
-                                              ),
-                                              ListTile(
-                                                title: Text("System"),
-                                                leading: Icon(MdiIcons.cogs),
-                                                onTap: () {},
-                                              ),
-                                              ListTile(
-                                                title: Text("Light"),
-                                                leading:
-                                                    Icon(MdiIcons.weatherSunny),
-                                                onTap: () {},
-                                              ),
-                                              ListTile(
-                                                title: Text("Dark"),
-                                                leading:
-                                                    Icon(MdiIcons.weatherNight),
-                                                onTap: () {},
-                                              ),
-                                              const SizedBox(height: 32),
-                                            ])));
-                                      });
-                                },
-                              );
-                            })
-                      ],
-                    ),
-                  ),
-                ),
+                    color: Theme.of(context).primaryColor,
+                    child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(children: [
+                          ListTile(
+                              title: Text("Theme",
+                                  style: Theme.of(context).primaryTextTheme.subtitle1),
+                              trailing: Icon(MdiIcons.chevronRight,
+                                  color: Theme.of(context).primaryIconTheme.color,
+                                  size: Theme.of(context).primaryIconTheme.size),
+                              onTap: () => _openThemeModal())
+                        ]))),
                 Card(
                     color: Theme.of(context).primaryColor,
                     child: Padding(
@@ -102,36 +45,28 @@ class _SettingsPageState extends State<SettingsPage> {
                         child: Column(children: [
                           ListTile(
                             title: Text("Impress",
-                                style: Theme.of(context)
-                                    .primaryTextTheme
-                                    .subtitle1),
+                                style: Theme.of(context).primaryTextTheme.subtitle1),
                             trailing: Icon(MdiIcons.openInNew,
                                 color: Theme.of(context).primaryIconTheme.color,
                                 size: Theme.of(context).primaryIconTheme.size),
-                            onTap: () => launch("https://codedoctor.tk/impress",
-                                forceWebView: true),
+                            onTap: () =>
+                                launch("https://codedoctor.tk/impress", forceWebView: true),
                           ),
                           ListTile(
                             title: Text("Privacy",
-                                style: Theme.of(context)
-                                    .primaryTextTheme
-                                    .subtitle1),
+                                style: Theme.of(context).primaryTextTheme.subtitle1),
                             trailing: Icon(MdiIcons.openInNew,
                                 color: Theme.of(context).primaryIconTheme.color,
                                 size: Theme.of(context).primaryIconTheme.size),
-                            onTap: () => launch("https://codedoctor.tk/privacy",
-                                forceWebView: true),
+                            onTap: () =>
+                                launch("https://codedoctor.tk/privacy", forceWebView: true),
                           ),
                           ListTile(
                               title: Text("Information",
-                                  style: Theme.of(context)
-                                      .primaryTextTheme
-                                      .subtitle1),
+                                  style: Theme.of(context).primaryTextTheme.subtitle1),
                               trailing: Icon(MdiIcons.informationOutline,
-                                  color:
-                                      Theme.of(context).primaryIconTheme.color,
-                                  size:
-                                      Theme.of(context).primaryIconTheme.size),
+                                  color: Theme.of(context).primaryIconTheme.color,
+                                  size: Theme.of(context).primaryIconTheme.size),
                               onTap: () {
                                 showAboutDialog(
                                     context: context,
@@ -145,5 +80,43 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
           );
         }));
+  }
+
+  void _openThemeModal() async {
+    var _currentTheme = ThemeController.of(context).currentThemeMode;
+    var themeMode = await showModalBottomSheet<ThemeMode>(
+        context: context,
+        builder: (context) {
+          return Container(
+              margin: EdgeInsets.only(bottom: 20),
+              child: ListView(shrinkWrap: true, children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                  child: Text(
+                    "Theme",
+                    style: Theme.of(context).textTheme.headline5,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                ListTile(
+                    title: Text("System"),
+                    selected: _currentTheme == ThemeMode.system,
+                    leading: Icon(MdiIcons.cogs),
+                    onTap: () => Navigator.of(context).pop(ThemeMode.system)),
+                ListTile(
+                    title: Text("Light"),
+                    selected: _currentTheme == ThemeMode.light,
+                    leading: Icon(MdiIcons.weatherSunny),
+                    onTap: () => Navigator.of(context).pop(ThemeMode.light)),
+                ListTile(
+                    title: Text("Dark"),
+                    selected: _currentTheme == ThemeMode.dark,
+                    leading: Icon(MdiIcons.weatherNight),
+                    onTap: () => Navigator.of(context).pop(ThemeMode.dark)),
+                const SizedBox(height: 32),
+              ]));
+        });
+    if (themeMode == null) return;
+    ThemeController.of(context).setThemeMode(themeMode);
   }
 }

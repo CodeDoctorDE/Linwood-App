@@ -31,9 +31,8 @@ class Member {
   int get level {
     return likes;
   }
-  Guild get guild {
-    return GetIt.I.get<ApiService>().getGuild(guildId);
-  }
+
+  Future<Guild> get guild => GetIt.I.get<ApiService>().fetchGuild(guildId);
 
   factory Member.fromJson(Map<String, dynamic> json) {
     return Member(
@@ -43,7 +42,7 @@ class Member {
         likes: json['likes'],
         dislikes: json['dislikes'],
         points: json['points'],
-        guildId: json['guildId']],
+        guildId: json['guildId'],
         role: json['role']);
   }
 }
