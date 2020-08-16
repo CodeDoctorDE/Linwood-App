@@ -60,9 +60,12 @@ class MyApp extends StatelessWidget {
                   visualDensity: VisualDensity.adaptivePlatformDensity,
                 ),
                 darkTheme: ThemeData(
-                    brightness: Brightness.dark,
-                    primarySwatch: Colors.green,
-                    accentColor: Colors.orange),
+                  brightness: Brightness.dark,
+                  primarySwatch: Colors.green,
+                  accentColor: Colors.orange,
+                  fontFamily: "Chilanka",
+                  visualDensity: VisualDensity.adaptivePlatformDensity,
+                ),
                 routes: {
                   RoutePages.home: (_) => HomePage(),
                   RoutePages.guild: (_) => GuildPage(),
