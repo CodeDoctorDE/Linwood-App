@@ -1,6 +1,9 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:linwood/pages.dart';
+import 'package:linwood/pages/callback.dart';
 import 'package:linwood/pages/guild/admin/settings.dart';
 import 'package:linwood/pages/guild/admin/teams.dart';
 import 'package:linwood/pages/guilds.dart';
@@ -14,6 +17,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'pages/guild/home.dart';
 
 void main() async {
+  String myImportantString = window.location.href
+      .substring(window.location.href.indexOf(r'?'), window.location.href.length);
+  print(myImportantString);
   WidgetsFlutterBinding.ensureInitialized();
   GetIt.I.registerSingleton(ApiService());
   // load the shared preferences from disk before the app is started
@@ -68,6 +74,7 @@ class MyApp extends StatelessWidget {
                 ),
                 routes: {
                   RoutePages.home: (_) => HomePage(),
+                  RoutePages.callback: (_) => CallbackPage(),
                   RoutePages.guild: (_) => GuildPage(),
                   RoutePages.adminSettings: (_) => AdminSettingsPage(),
                   RoutePages.guilds: (_) => GuildsPage(),
