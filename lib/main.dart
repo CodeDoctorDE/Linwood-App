@@ -1,7 +1,7 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:linwood/pages.dart';
 import 'package:linwood/pages/callback.dart';
 import 'package:linwood/pages/guild/admin/settings.dart';
@@ -12,21 +12,15 @@ import 'package:linwood/pages/notification.dart';
 import 'package:linwood/pages/settings.dart';
 import 'package:linwood/services/api_service.dart';
 import 'package:linwood/theme.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'pages/guild/home.dart';
 
 void main() async {
-  String myImportantString = window.location.href
-      .substring(window.location.href.indexOf(r'?'), window.location.href.length);
-  print(myImportantString);
   WidgetsFlutterBinding.ensureInitialized();
   GetIt.I.registerSingleton(ApiService());
-  // load the shared preferences from disk before the app is started
-  final prefs = await SharedPreferences.getInstance();
-
-  // create new theme controller, which will get the currently selected from shared preferences
-  final themeController = ThemeController(prefs);
+  await Hive.initFlutter();
+  await Hive.openBox('settings');
+  final themeController = ThemeController();
   runApp(MyApp(themeController: themeController));
 }
 

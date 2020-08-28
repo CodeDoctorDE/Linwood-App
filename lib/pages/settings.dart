@@ -116,6 +116,6 @@ class _SettingsPageState extends State<SettingsPage> {
               ]));
         });
     if (themeMode == null) return;
-    ThemeController.of(context).setThemeMode(themeMode);
+    ThemeController.of(context).currentThemeMode = themeMode;
   }
 }

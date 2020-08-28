@@ -1,36 +1,22 @@
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:hive/hive.dart';
 
 /// provides the currently selected theme, saves changed theme preferences to disk
 class ThemeController extends ChangeNotifier {
   static const themePrefKey = 'theme';
 
-  ThemeController(this._prefs) {
-    // load theme from preferences on initialization
-    _currentTheme = _prefs.getString(themePrefKey) ?? 'system';
-  }
+  String get currentTheme =>
+      Hive.box("settings").get(themePrefKey, defaultValue: "system") as String;
 
-  final SharedPreferences _prefs;
-  String _currentTheme;
-
-  /// get the current theme
-  String get currentTheme => _currentTheme;
-  ThemeMode get currentThemeMode => EnumToString.fromString(ThemeMode.values, _currentTheme);
-
-  void setTheme(String theme) {
-    _currentTheme = theme;
-
-    // notify the app that the theme was changed
+  set currentTheme(String value) {
+    Hive.box("settings").put(themePrefKey, value);
     notifyListeners();
-
-    // store updated theme on disk
-    _prefs.setString(themePrefKey, theme);
   }
 
-  void setThemeMode(ThemeMode theme) {
-    setTheme(EnumToString.parse(theme));
-  }
+  set currentThemeMode(ThemeMode themeMode) => currentTheme = EnumToString.parse(themeMode);
+
+  ThemeMode get currentThemeMode => EnumToString.fromString(ThemeMode.values, currentTheme);
 
   /// get the controller from any page of your app
   static ThemeController of(BuildContext context) {
