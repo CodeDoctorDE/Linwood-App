@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:linwood/pages.dart';
+import 'package:linwood_app/pages.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../main.dart';
 
 class HomeDrawer extends StatefulWidget {
-  const HomeDrawer({@required this.permanentlyDisplay, Key key})
-      : super(key: key);
+  const HomeDrawer({@required this.permanentlyDisplay, Key key}) : super(key: key);
 
   final bool permanentlyDisplay;
   @override
@@ -113,8 +112,7 @@ class _HomeDrawerState extends State<HomeDrawer> with RouteAware {
               decoration: BoxDecoration(
                   color: Theme.of(context).primaryColor,
                   borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(8.0),
-                      bottomRight: Radius.circular(8.0)),
+                      bottomLeft: Radius.circular(8.0), bottomRight: Radius.circular(8.0)),
                   boxShadow: [
                     BoxShadow(
                       color: Theme.of(context).backgroundColor.withOpacity(0.5),
@@ -134,8 +132,7 @@ class _HomeDrawerState extends State<HomeDrawer> with RouteAware {
                         IconButton(
                             icon: Icon(MdiIcons.helpCircleOutline),
                             onPressed: () async {
-                              await launch("https://wiki.linwood.tk",
-                                  forceWebView: true);
+                              await launch("https://wiki.linwood.tk", forceWebView: true);
                             },
                             tooltip: "Wiki"),
                         IconButton(
@@ -145,33 +142,28 @@ class _HomeDrawerState extends State<HomeDrawer> with RouteAware {
                             },
                             tooltip: "Settings"),
                         IconButton(
-                            icon: Icon(MdiIcons.logout),
-                            onPressed: () {},
-                            tooltip: "Logout"),
+                            icon: Icon(MdiIcons.logout), onPressed: () {}, tooltip: "Logout"),
                       ])))),
           Container(
               padding: EdgeInsets.zero,
               margin: EdgeInsets.zero,
               height: 350,
               child: DrawerHeader(
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                    SizedBox(
-                      height: 50,
-                    ),
-                    Image.asset(
-                      "assets/icon.png",
-                      height: 70,
-                    ),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    Text("Linwood",
-                        style: Theme.of(context).textTheme.headline5),
-                    Text("Open source discord bot platform",
-                        style: Theme.of(context).textTheme.subtitle2),
-                  ]))),
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                SizedBox(
+                  height: 50,
+                ),
+                Image.asset(
+                  "assets/icon.png",
+                  height: 70,
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                Text("Linwood", style: Theme.of(context).textTheme.headline5),
+                Text("Open source discord bot platform",
+                    style: Theme.of(context).textTheme.subtitle2),
+              ]))),
           ListTile(
             leading: const Icon(MdiIcons.homeOutline),
             title: const Text("Home"),
@@ -215,8 +207,7 @@ class _HomeDrawerState extends State<HomeDrawer> with RouteAware {
 
   /// Closes the drawer if applicable (which is only when it's not been displayed permanently) and navigates to the specified route
   /// In a mobile layout, the a modal drawer is used so we need to explicitly close it when the user selects a page to display
-  Future<void> _replaceNavigateTo(
-      BuildContext context, String routeName) async {
+  Future<void> _replaceNavigateTo(BuildContext context, String routeName) async {
     if (!widget.permanentlyDisplay) Navigator.pop(context);
     await Navigator.pushReplacementNamed(context, routeName);
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:linwood/widgets/home/scaffold.dart';
+import 'package:linwood_app/widgets/home/scaffold.dart';
 
 class NotificationPage extends StatefulWidget {
   @override
@@ -24,7 +24,6 @@ class _NotificationPageState extends State<NotificationPage> {
   @override
   Widget build(BuildContext context) {
     return HomeScaffold(
-        pageTitle: "Home",
-        body: Container(child: Center(child: Text("Coming soon..."))));
+        pageTitle: "Home", body: Container(child: Center(child: Text("Coming soon..."))));
   }
 }

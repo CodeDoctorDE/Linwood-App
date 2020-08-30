@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:linwood/widgets/home/drawer.dart';
+import 'package:linwood_app/widgets/home/drawer.dart';
 
 /// A responsive scaffold for our application.
 /// Displays the navigation drawer alongside the [Scaffold] if the screen/window size is large enough

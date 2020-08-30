@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:linwood/pages.dart';
+import 'package:linwood_app/pages.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../main.dart';

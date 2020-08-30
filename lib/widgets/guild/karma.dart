@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:linwood/services/member.dart';
+import 'package:linwood_app/services/member.dart';
 
 class KarmaCard extends StatelessWidget {
   final Member member;

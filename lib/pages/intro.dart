@@ -1,4 +1,4 @@
-import 'package:linwood/pages/login.dart';
+import 'package:linwood_app/pages/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -21,8 +21,7 @@ class _WelcomePageState extends State<WelcomePage> {
     },
     {
       "header": "For users",
-      "description":
-          "Play games and configure everything without being online on discord!",
+      "description": "Play games and configure everything without being online on discord!",
       "image": MdiIcons.plusCircleMultipleOutline
     },
     {
@@ -61,12 +60,11 @@ class _WelcomePageState extends State<WelcomePage> {
       future: http.get("https://api.linwood.tk"),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting)
-          return Center(
-              child: CircularProgressIndicator()); //CIRCULAR INDICATOR
+          return Center(child: CircularProgressIndicator()); //CIRCULAR INDICATOR
         else {
           if (snapshot.hasData) {
-            Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => HomePage()));
+            Navigator.of(context)
+                .pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
           }
           return _createWelcomePage(context);
         }
@@ -143,25 +141,22 @@ class _WelcomePageState extends State<WelcomePage> {
           Align(
               alignment: Alignment.bottomRight,
               child: Container(
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      (_currentPage <= 4.5)
-                          ? FlatButton(
-                              onPressed: () {
-                                _setPage(5);
-                              },
-                              child: Text("SKIP"),
-                            )
-                          : RaisedButton(
-                              onPressed: () {
-                                Navigator.of(context).pushReplacement(
-                                    MaterialPageRoute(
-                                        builder: (context) => LoginPage()));
-                              },
-                              child: Text("START"),
-                            ),
-                    ]),
+                child: Row(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
+                  (_currentPage <= 4.5)
+                      ? FlatButton(
+                          onPressed: () {
+                            _setPage(5);
+                          },
+                          child: Text("SKIP"),
+                        )
+                      : RaisedButton(
+                          onPressed: () {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(builder: (context) => LoginPage()));
+                          },
+                          child: Text("START"),
+                        ),
+                ]),
                 margin: EdgeInsets.all(10),
                 padding: EdgeInsets.symmetric(horizontal: 32),
               ))

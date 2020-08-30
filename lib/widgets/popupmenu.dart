@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:linwood/pages/settings.dart';
+import 'package:linwood_app/pages/settings.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class Choice {
@@ -16,8 +16,7 @@ class LinwoodPopupMenu extends StatelessWidget {
         title: 'Settings',
         icon: MdiIcons.cogs,
         onClick: (context) {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => SettingsPage()));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => SettingsPage()));
         }),
     Choice(
         title: 'Logout',

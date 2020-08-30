@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:linwood/pages.dart';
-import 'package:linwood/services/guild.dart';
-import 'package:linwood/widgets/home/scaffold.dart';
+import 'package:linwood_app/pages.dart';
+import 'package:linwood_app/services/guild.dart';
+import 'package:linwood_app/widgets/home/scaffold.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class GuildsPage extends StatelessWidget {
@@ -33,8 +33,7 @@ class GuildsPage extends StatelessWidget {
                   var guild = guilds[index];
                   return Card(
                       child: Container(
-                          margin: EdgeInsets.symmetric(
-                              horizontal: 50, vertical: 25),
+                          margin: EdgeInsets.symmetric(horizontal: 50, vertical: 25),
                           child: Column(
                             children: [
                               if (guild.icon != null)
@@ -49,8 +48,8 @@ class GuildsPage extends StatelessWidget {
                               Text(guild.name),
                               (guild.added)
                                   ? RaisedButton.icon(
-                                      onPressed: () => Navigator.of(context)
-                                          .pushNamed(RoutePages.guild),
+                                      onPressed: () =>
+                                          Navigator.of(context).pushNamed(RoutePages.guild),
                                       icon: Icon(MdiIcons.viewDashboardOutline),
                                       label: Text("Manage"))
                                   : RaisedButton.icon(

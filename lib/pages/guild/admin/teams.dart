@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:linwood/services/team.dart';
-import 'package:linwood/widgets/guild/scaffold.dart';
+import 'package:linwood_app/services/team.dart';
+import 'package:linwood_app/widgets/guild/scaffold.dart';
 
 class TeamsPage extends StatelessWidget {
   final List<Team> teams = [
-    Team(
-        id: "0908",
-        name: "Test Team",
-        plan: TeamPlan.private,
-        role: Role.member)
+    Team(id: "0908", name: "Test Team", plan: TeamPlan.private, role: Role.member)
   ];
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:linwood/widgets/guild/scaffold.dart';
+import 'package:linwood_app/widgets/guild/scaffold.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class AdminSettingsPage extends StatefulWidget {
@@ -41,32 +41,29 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
             children: [
               ListView(children: [
                 Card(
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ListTile(
-                            title: Text("Guild default language"),
-                            trailing: Container(
-                                width: 150,
-                                child: DropdownButtonFormField<String>(
-                                    items: languages.map((String val) {
-                                      return new DropdownMenuItem<String>(
-                                        value: val,
-                                        child: new Text(val),
-                                      );
-                                    }).toList(),
-                                    value: _selectedLanguage,
-                                    onChanged: (newVal) {
-                                      this.setState(() {
-                                        _selectedLanguage = newVal;
-                                      });
-                                    }))),
-                        ListTile(
-                          title: Text("switch"),
-                          trailing:
-                              Switch(value: true, onChanged: (bool value) {}),
-                        ),
-                      ]),
+                  child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    ListTile(
+                        title: Text("Guild default language"),
+                        trailing: Container(
+                            width: 150,
+                            child: DropdownButtonFormField<String>(
+                                items: languages.map((String val) {
+                                  return new DropdownMenuItem<String>(
+                                    value: val,
+                                    child: new Text(val),
+                                  );
+                                }).toList(),
+                                value: _selectedLanguage,
+                                onChanged: (newVal) {
+                                  this.setState(() {
+                                    _selectedLanguage = newVal;
+                                  });
+                                }))),
+                    ListTile(
+                      title: Text("switch"),
+                      trailing: Switch(value: true, onChanged: (bool value) {}),
+                    ),
+                  ]),
                 )
               ]),
               Icon(Icons.directions_transit),

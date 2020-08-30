@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:linwood/widgets/home/scaffold.dart';
+import 'package:linwood_app/widgets/home/scaffold.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);

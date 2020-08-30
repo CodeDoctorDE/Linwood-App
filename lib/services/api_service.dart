@@ -1,4 +1,4 @@
-import 'package:linwood/services/guild.dart';
+import 'package:linwood_app/services/guild.dart';
 
 class ApiService {
   Future<Guild> fetchGuild(int index) {
