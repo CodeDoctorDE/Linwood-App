@@ -5,8 +5,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import '../../main.dart';
 
 class GuildDrawer extends StatefulWidget {
-  const GuildDrawer({@required this.permanentlyDisplay, Key key})
-      : super(key: key);
+  const GuildDrawer({@required this.permanentlyDisplay, Key key}) : super(key: key);
 
   final bool permanentlyDisplay;
   @override
@@ -111,7 +110,7 @@ class _GuildDrawerState extends State<GuildDrawer> with RouteAware {
           color: Theme.of(context).primaryColor,
           textTheme: ButtonTextTheme.primary,
           icon: Icon(MdiIcons.keyboardBackspace),
-          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
           onPressed: () {
             if (!widget.permanentlyDisplay) Navigator.pop(context);
             Navigator.of(context).pop();
@@ -123,33 +122,28 @@ class _GuildDrawerState extends State<GuildDrawer> with RouteAware {
             margin: EdgeInsets.zero,
             height: 250,
             child: DrawerHeader(
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Image.asset(
-                    "assets/icon.png",
-                    height: 70,
-                  ),
-                  SizedBox(
-                    height: 50,
-                  ),
-                  Text("GuildTitle",
-                      style: Theme.of(context).textTheme.headline5),
-                  RichText(
-                    text: TextSpan(
-                      style: Theme.of(context).textTheme.bodyText2,
-                      children: <TextSpan>[
-                        TextSpan(
-                            text: 'Plan: ',
-                            style: TextStyle(fontWeight: FontWeight.bold)),
-                        TextSpan(text: 'Community'),
-                      ],
-                    ),
-                  )
-                ]))),
+                child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+              SizedBox(
+                height: 20,
+              ),
+              Image.asset(
+                "assets/icon.png",
+                height: 70,
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              Text("GuildTitle", style: Theme.of(context).textTheme.headline5),
+              RichText(
+                text: TextSpan(
+                  style: Theme.of(context).textTheme.bodyText2,
+                  children: <TextSpan>[
+                    TextSpan(text: 'Plan: ', style: TextStyle(fontWeight: FontWeight.bold)),
+                    TextSpan(text: 'Community'),
+                  ],
+                ),
+              )
+            ]))),
         ExpansionTile(
           initiallyExpanded: true,
           title: Text('User'),
@@ -173,8 +167,7 @@ class _GuildDrawerState extends State<GuildDrawer> with RouteAware {
                       leading: const Icon(MdiIcons.podium),
                       title: const Text("Karma"),
                       onTap: () async {
-                        await _replaceNavigateTo(
-                            context, RoutePages.notification);
+                        await _replaceNavigateTo(context, RoutePages.notification);
                       },
                       selected: _selectedRoute == RoutePages.notification,
                     ),
@@ -204,31 +197,24 @@ class _GuildDrawerState extends State<GuildDrawer> with RouteAware {
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: Align(
                               alignment: Alignment.topLeft,
-                              child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: <Widget>[
-                                    ListTile(
-                                      leading: const Icon(
-                                          MdiIcons.accountMultipleOutline),
-                                      title: const Text("Teams"),
-                                      onTap: () async {
-                                        await _replaceNavigateTo(
-                                            context, RoutePages.teams);
-                                      },
-                                      selected:
-                                          _selectedRoute == RoutePages.teams,
-                                    ),
-                                    ListTile(
-                                      leading: const Icon(MdiIcons.cogs),
-                                      title: const Text("Settings"),
-                                      onTap: () async {
-                                        await _replaceNavigateTo(
-                                            context, RoutePages.adminSettings);
-                                      },
-                                      selected: _selectedRoute ==
-                                          RoutePages.adminSettings,
-                                    )
-                                  ])))
+                              child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+                                ListTile(
+                                  leading: const Icon(MdiIcons.accountMultipleOutline),
+                                  title: const Text("Teams"),
+                                  onTap: () async {
+                                    await _replaceNavigateTo(context, RoutePages.teams);
+                                  },
+                                  selected: _selectedRoute == RoutePages.teams,
+                                ),
+                                ListTile(
+                                  leading: const Icon(MdiIcons.cogs),
+                                  title: const Text("Settings"),
+                                  onTap: () async {
+                                    await _replaceNavigateTo(context, RoutePages.adminSettings);
+                                  },
+                                  selected: _selectedRoute == RoutePages.adminSettings,
+                                )
+                              ])))
                     ])))
       ])),
       if (widget.permanentlyDisplay)
@@ -241,8 +227,7 @@ class _GuildDrawerState extends State<GuildDrawer> with RouteAware {
 
   /// Closes the drawer if applicable (which is only when it's not been displayed permanently) and navigates to the specified route
   /// In a mobile layout, the a modal drawer is used so we need to explicitly close it when the user selects a page to display
-  Future<void> _replaceNavigateTo(
-      BuildContext context, String routeName) async {
+  Future<void> _replaceNavigateTo(BuildContext context, String routeName) async {
     if (!widget.permanentlyDisplay) Navigator.pop(context);
     await Navigator.pushReplacementNamed(context, routeName);
   }

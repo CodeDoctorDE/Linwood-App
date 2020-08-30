@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:linwood/pages.dart';
-import 'package:linwood/pages/callback.dart';
+import 'package:linwood/pages/callback_web.dart';
 import 'package:linwood/pages/guild/admin/settings.dart';
 import 'package:linwood/pages/guild/admin/teams.dart';
 import 'package:linwood/pages/guilds.dart';
