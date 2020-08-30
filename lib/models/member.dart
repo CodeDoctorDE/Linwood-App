@@ -1,7 +1,6 @@
 import 'package:get_it/get_it.dart';
-import 'package:linwood_app/services/guild.dart';
-
-import 'api_service.dart';
+import 'package:linwood_app/models/guild.dart';
+import 'package:linwood_app/services/api_service.dart';
 
 class Member {
   final String name;

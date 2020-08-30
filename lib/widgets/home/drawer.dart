@@ -106,11 +106,10 @@ class _HomeDrawerState extends State<HomeDrawer> with RouteAware {
       Expanded(
         child: ListView(padding: EdgeInsets.zero, children: [
           Container(
-              height: 50,
               padding: EdgeInsets.zero,
               margin: EdgeInsets.zero,
               decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
+                  color: Theme.of(context).canvasColor,
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(8.0), bottomRight: Radius.circular(8.0)),
                   boxShadow: [
@@ -122,28 +121,32 @@ class _HomeDrawerState extends State<HomeDrawer> with RouteAware {
                     )
                   ]),
               child: IconTheme(
-                  data: Theme.of(context).primaryIconTheme,
-                  child: Center(
-                      child: ListView(
-                          shrinkWrap: true,
-                          padding: EdgeInsets.zero,
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                        IconButton(
-                            icon: Icon(MdiIcons.helpCircleOutline),
-                            onPressed: () async {
-                              await launch("https://wiki.linwood.tk", forceWebView: true);
-                            },
-                            tooltip: "Wiki"),
-                        IconButton(
-                            icon: Icon(MdiIcons.cogs),
-                            onPressed: () async {
-                              await _navigateTo(context, RoutePages.settings);
-                            },
-                            tooltip: "Settings"),
-                        IconButton(
-                            icon: Icon(MdiIcons.logout), onPressed: () {}, tooltip: "Logout"),
-                      ])))),
+                  data: Theme.of(context).iconTheme,
+                  child: ExpansionTile(
+                      title: Text("CodeDoctor"),
+                      leading: Image.asset("assets/icon.png", height: 25),
+                      children: [
+                        Wrap(direction: Axis.horizontal, children: [
+                          IconButton(
+                              icon: Icon(MdiIcons.accountOutline),
+                              onPressed: () {},
+                              tooltip: "Account"),
+                          IconButton(
+                              icon: Icon(MdiIcons.helpCircleOutline),
+                              onPressed: () async {
+                                await launch("https://wiki.linwood.tk", forceWebView: true);
+                              },
+                              tooltip: "Wiki"),
+                          IconButton(
+                              icon: Icon(MdiIcons.cogs),
+                              onPressed: () async {
+                                await _navigateTo(context, RoutePages.settings);
+                              },
+                              tooltip: "Settings"),
+                          IconButton(
+                              icon: Icon(MdiIcons.logout), onPressed: () {}, tooltip: "Logout")
+                        ])
+                      ]))),
           Container(
               padding: EdgeInsets.zero,
               margin: EdgeInsets.zero,

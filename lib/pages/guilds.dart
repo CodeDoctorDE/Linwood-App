@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linwood_app/pages.dart';
-import 'package:linwood_app/services/guild.dart';
+import 'package:linwood_app/models/guild.dart';
 import 'package:linwood_app/widgets/home/scaffold.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 

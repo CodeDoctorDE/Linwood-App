@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:linwood_app/services/team.dart';
+import 'package:linwood_app/models/team.dart';
 import 'package:linwood_app/widgets/guild/scaffold.dart';
 
 class TeamsPage extends StatelessWidget {
