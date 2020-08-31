@@ -12,6 +12,26 @@ class _UserPageState extends State<UserPage> {
       appBar: AppBar(
         title: Text("User"),
       ),
+      body: ListView(
+        children: [
+          Container(
+            color: Theme.of(context).canvasColor,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Image.asset("assets/icon.png", height: 100),
+                  ),
+                  Text("CodeDoctor#12345", style: Theme.of(context).textTheme.headline4)
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

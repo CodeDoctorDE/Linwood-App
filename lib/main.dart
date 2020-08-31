@@ -4,16 +4,20 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:linwood_app/pages.dart';
 import 'package:linwood_app/pages/callback_web.dart';
+import 'package:linwood_app/pages/guild/admin/prefixes.dart';
 import 'package:linwood_app/pages/guild/admin/settings.dart';
 import 'package:linwood_app/pages/guild/admin/teams.dart';
 import 'package:linwood_app/pages/guilds.dart';
 import 'package:linwood_app/pages/home.dart';
 import 'package:linwood_app/pages/notification.dart';
 import 'package:linwood_app/pages/settings.dart';
+import 'package:linwood_app/pages/user.dart';
+import 'package:linwood_app/pages/wikis.dart';
 import 'package:linwood_app/services/api_service.dart';
 import 'package:linwood_app/theme.dart';
 
 import 'pages/guild/home.dart';
+import 'pages/wiki/home.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -71,7 +75,11 @@ class MyApp extends StatelessWidget {
                   RoutePages.callback: (_) => CallbackPage(),
                   RoutePages.guild: (_) => GuildPage(),
                   RoutePages.adminSettings: (_) => AdminSettingsPage(),
+                  RoutePages.prefixes: (_) => PrefixesPage(),
                   RoutePages.guilds: (_) => GuildsPage(),
+                  RoutePages.user: (_) => UserPage(),
+                  RoutePages.wiki: (_) => WikiPage(),
+                  RoutePages.wikis: (_) => WikisPage(),
                   RoutePages.notification: (_) => NotificationPage(),
                   RoutePages.teams: (_) => TeamsPage(),
                   RoutePages.settings: (_) => SettingsPage()

@@ -3,6 +3,8 @@ import 'package:flutter/rendering.dart';
 import 'package:linwood_app/widgets/guild/scaffold.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import '../../../pages.dart';
+
 class AdminSettingsPage extends StatefulWidget {
   @override
   _AdminSettingsPageState createState() => _AdminSettingsPageState();
@@ -14,7 +16,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 4,
+        length: 5,
         child: GuildScaffold(
           bottom: TabBar(
               labelPadding: EdgeInsets.symmetric(horizontal: 50.0),
@@ -35,6 +37,10 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                 Tab(
                   icon: Icon(MdiIcons.gamepad),
                   text: "Games",
+                ),
+                Tab(
+                  icon: Icon(MdiIcons.accountMultiplePlusOutline),
+                  text: "Invites",
                 )
               ]),
           body: TabBarView(
@@ -63,10 +69,15 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                       title: Text("switch"),
                       trailing: Switch(value: true, onChanged: (bool value) {}),
                     ),
+                    ListTile(
+                      title: Text("Prefixes"),
+                      onTap: () => Navigator.of(context).pushNamed(RoutePages.prefixes),
+                    )
                   ]),
                 )
               ]),
               Icon(Icons.directions_transit),
+              Icon(Icons.directions_bike),
               Icon(Icons.directions_bike),
               Icon(Icons.directions_bike),
             ],

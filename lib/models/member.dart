@@ -1,31 +1,23 @@
 import 'package:get_it/get_it.dart';
 import 'package:linwood_app/models/guild.dart';
+import 'package:linwood_app/models/user.dart';
 import 'package:linwood_app/services/api_service.dart';
 
 class Member {
-  final String name;
-  final String tag;
   final String id;
-  final String icon;
-  int likes;
-  int dislikes;
-  int points;
-  int guildId;
-  MemberRole role;
+  final int likes;
+  final int dislikes;
+  final int points;
+  final int guildId;
+  final int invites;
+  final MemberRole role;
 
-  Member(
-      {this.name,
-      this.tag,
-      this.id,
-      this.icon,
-      this.likes,
-      this.dislikes,
-      this.points,
-      this.guildId,
-      this.role});
+  Member({this.invites, this.id, this.likes, this.dislikes, this.points, this.guildId, this.role});
   int get karma {
     return likes - dislikes;
   }
+
+  Future<User> get user => GetIt.I.get<ApiService>().fetchUser(guildId);
 
   int get level {
     return likes;
@@ -35,14 +27,13 @@ class Member {
 
   factory Member.fromJson(Map<String, dynamic> json) {
     return Member(
-        name: json['name'],
         id: json['id'],
-        icon: json['icon'],
         likes: json['likes'],
         dislikes: json['dislikes'],
         points: json['points'],
         guildId: json['guildId'],
-        role: json['role']);
+        role: json['role'],
+        invites: json['invites']);
   }
 }
 

@@ -24,6 +24,6 @@ class _NotificationPageState extends State<NotificationPage> {
   @override
   Widget build(BuildContext context) {
     return HomeScaffold(
-        pageTitle: "Home", body: Container(child: Center(child: Text("Coming soon..."))));
+        pageTitle: "Notification", body: Container(child: Center(child: Text("Coming soon..."))));
   }
 }

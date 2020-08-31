@@ -4,7 +4,7 @@ import 'package:linwood_app/widgets/guild/scaffold.dart';
 
 class TeamsPage extends StatelessWidget {
   final List<Team> teams = [
-    Team(id: "0908", name: "Test Team", plan: TeamPlan.private, role: Role.member)
+    Team(id: "0908", name: "Test Team", plan: TeamPlan.private, role: TeamRole.member)
   ];
   @override
   Widget build(BuildContext context) {

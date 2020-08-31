@@ -172,6 +172,22 @@ class _GuildDrawerState extends State<GuildDrawer> with RouteAware {
                       selected: _selectedRoute == RoutePages.notification,
                     ),
                     ListTile(
+                      leading: const Icon(MdiIcons.newspaperVariantMultipleOutline),
+                      title: const Text("Wiki"),
+                      onTap: () async {
+                        await _replaceNavigateTo(context, RoutePages.notification);
+                      },
+                      selected: _selectedRoute == RoutePages.notification,
+                    ),
+                    ListTile(
+                      leading: const Icon(MdiIcons.accountMultipleOutline),
+                      title: const Text("Teams"),
+                      onTap: () async {
+                        await _replaceNavigateTo(context, RoutePages.teams);
+                      },
+                      selected: _selectedRoute == RoutePages.teams,
+                    ),
+                    ListTile(
                       leading: const Icon(MdiIcons.tune),
                       title: const Text("Settings"),
                       onTap: () async {
@@ -199,12 +215,12 @@ class _GuildDrawerState extends State<GuildDrawer> with RouteAware {
                               alignment: Alignment.topLeft,
                               child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
                                 ListTile(
-                                  leading: const Icon(MdiIcons.accountMultipleOutline),
-                                  title: const Text("Teams"),
+                                  leading: const Icon(MdiIcons.viewDashboardOutline),
+                                  title: const Text("Dashboard"),
                                   onTap: () async {
-                                    await _replaceNavigateTo(context, RoutePages.teams);
+                                    await _replaceNavigateTo(context, RoutePages.adminSettings);
                                   },
-                                  selected: _selectedRoute == RoutePages.teams,
+                                  selected: _selectedRoute == RoutePages.adminSettings,
                                 ),
                                 ListTile(
                                   leading: const Icon(MdiIcons.cogs),
