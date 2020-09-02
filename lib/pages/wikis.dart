@@ -36,10 +36,13 @@ class WikisPage extends StatelessWidget {
                                     SizedBox(height: 10),
                                     Text(wiki.name),
                                     RaisedButton.icon(
-                                        onPressed: () =>
-                                            Navigator.of(context).pushNamed(RoutePages.wiki),
-                                        icon: Icon(MdiIcons.openInApp),
-                                        label: Text("Open"))
+                                      onPressed: () =>
+                                          Navigator.of(context).pushNamed(RoutePages.wiki),
+                                      icon: Icon(MdiIcons.openInApp),
+                                      label: Text("Open"),
+                                      color: Theme.of(context).primaryColor,
+                                      textColor: Theme.of(context).primaryTextTheme.button.color,
+                                    )
                                   ],
                                 )));
                       }),

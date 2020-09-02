@@ -1,11 +1,11 @@
-import 'package:linwood_app/pages/login.dart';
+import 'package:linwood_app/pages/session/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import 'home.dart';
+import '../home.dart';
 
 class WelcomePage extends StatefulWidget {
   @override
