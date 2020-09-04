@@ -27,16 +27,16 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                   text: "General",
                 ),
                 Tab(
+                  icon: Icon(MdiIcons.gamepad),
+                  text: "Games",
+                ),
+                Tab(
                   icon: Icon(MdiIcons.podium),
                   text: "Karma",
                 ),
                 Tab(
                   icon: Icon(MdiIcons.bellOutline),
                   text: "Notification",
-                ),
-                Tab(
-                  icon: Icon(MdiIcons.gamepad),
-                  text: "Games",
                 ),
                 Tab(
                   icon: Icon(MdiIcons.accountMultiplePlusOutline),
@@ -76,8 +76,58 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                   ]),
                 )
               ]),
-              Icon(Icons.directions_transit),
-              Icon(Icons.directions_bike),
+              ListView(children: [
+                Card(
+                    child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  ListTile(
+                      title: Text("Game master"),
+                      subtitle: RichText(
+                          text: TextSpan(
+                              text: "Current: ",
+                              style: Theme.of(context).textTheme.caption,
+                              children: [
+                            TextSpan(
+                                text: "Game master", style: TextStyle(fontWeight: FontWeight.bold)),
+                            TextSpan(text: " "),
+                            TextSpan(
+                                text: "(123456789)", style: TextStyle(fontStyle: FontStyle.italic))
+                          ]))),
+                  ListTile(
+                      title: Text("Game category"),
+                      subtitle: RichText(
+                          text: TextSpan(
+                              text: "Current: ",
+                              style: Theme.of(context).textTheme.caption,
+                              children: [
+                            TextSpan(text: "Games", style: TextStyle(fontWeight: FontWeight.bold)),
+                            TextSpan(text: " "),
+                            TextSpan(
+                                text: "(123456789)", style: TextStyle(fontStyle: FontStyle.italic))
+                          ])))
+                ]))
+              ]),
+              ListView(children: [
+                Card(
+                    child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  ListTile(
+                      title: Text("Karma levelup channel"),
+                      subtitle: RichText(
+                          text: TextSpan(
+                              text: "Current: ",
+                              style: Theme.of(context).textTheme.caption,
+                              children: [
+                            TextSpan(
+                                text: "Game master", style: TextStyle(fontWeight: FontWeight.bold)),
+                            TextSpan(text: " "),
+                            TextSpan(
+                                text: "(123456789)", style: TextStyle(fontStyle: FontStyle.italic))
+                          ]))),
+                  ListTile(
+                    title: Text("Prefixes"),
+                    onTap: () => Navigator.of(context).pushNamed(RoutePages.prefixes),
+                  )
+                ]))
+              ]),
               Icon(Icons.directions_bike),
               Icon(Icons.directions_bike),
             ],

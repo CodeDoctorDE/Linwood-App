@@ -1,11 +1,36 @@
-import 'package:linwood_app/pages/login.dart';
+import 'package:linwood_app/pages/session/login_web.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import 'home.dart';
+import '../home.dart';
+
+class IntroPage extends StatefulWidget {
+  @override
+  _IntroPageState createState() => _IntroPageState();
+}
+
+class _IntroPageState extends State<IntroPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: FutureBuilder<Response>(
+      future: http.get("https://api.linwood.tk"),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting)
+          return Center(child: CircularProgressIndicator());
+        else {
+          if (snapshot.hasData)
+            Navigator.of(context)
+                .pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
+          return WelcomePage();
+        }
+      },
+    ));
+  }
+}
 
 class WelcomePage extends StatefulWidget {
   @override
@@ -55,24 +80,6 @@ class _WelcomePageState extends State<WelcomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: FutureBuilder<Response>(
-      future: http.get("https://api.linwood.tk"),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting)
-          return Center(child: CircularProgressIndicator()); //CIRCULAR INDICATOR
-        else {
-          if (snapshot.hasData) {
-            Navigator.of(context)
-                .pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
-          }
-          return _createWelcomePage(context);
-        }
-      },
-    ));
-  }
-
-  Widget _createWelcomePage(BuildContext context) {
     return Container(
       child: Stack(
         children: <Widget>[
@@ -98,34 +105,36 @@ class _WelcomePageState extends State<WelcomePage> {
                       ),
                     ),
                     Flexible(
-                      flex: 1,
-                      fit: FlexFit.tight,
-                      child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 30.0),
-                        child: Column(
-                          children: <Widget>[
-                            Text(item['header'],
+                        flex: 1,
+                        fit: FlexFit.tight,
+                        child: Container(
+                            padding: EdgeInsets.symmetric(horizontal: 30.0),
+                            child: Column(children: <Widget>[
+                              Text(item['header'],
+                                  style: TextStyle(
+                                      fontSize: 50.0,
+                                      fontWeight: FontWeight.w300,
+                                      color: Color(0XFF3F3D56),
+                                      height: 2.0)),
+                              Text(
+                                item['description'],
                                 style: TextStyle(
-                                    fontSize: 50.0,
-                                    fontWeight: FontWeight.w300,
-                                    color: Color(0XFF3F3D56),
-                                    height: 2.0)),
-                            Text(
-                              item['description'],
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  letterSpacing: 1.2,
-                                  fontSize: 16.0,
-                                  height: 1.3),
-                              textAlign: TextAlign.center,
-                            )
-                          ],
-                        ),
-                      ),
-                    )
+                                    color: Colors.grey,
+                                    letterSpacing: 1.2,
+                                    fontSize: 16.0,
+                                    height: 1.3),
+                                textAlign: TextAlign.center,
+                              )
+                            ]))),
                   ]));
             },
           ),
+          Align(
+              alignment: Alignment.bottomLeft,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset("assets/icon.png", height: 50),
+              )),
           Align(
               alignment: Alignment.bottomCenter,
               child: Container(
@@ -142,7 +151,7 @@ class _WelcomePageState extends State<WelcomePage> {
               alignment: Alignment.bottomRight,
               child: Container(
                 child: Row(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
-                  (_currentPage <= 4.5)
+                  (_currentPage <= _items.length - 1.5)
                       ? FlatButton(
                           onPressed: () {
                             _setPage(5);

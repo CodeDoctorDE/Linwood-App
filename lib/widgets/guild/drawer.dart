@@ -172,6 +172,14 @@ class _GuildDrawerState extends State<GuildDrawer> with RouteAware {
                       selected: _selectedRoute == RoutePages.notification,
                     ),
                     ListTile(
+                      leading: const Icon(MdiIcons.calendarOutline),
+                      title: const Text("Calendar"),
+                      onTap: () async {
+                        await _replaceNavigateTo(context, RoutePages.calendar);
+                      },
+                      selected: _selectedRoute == RoutePages.calendar,
+                    ),
+                    ListTile(
                       leading: const Icon(MdiIcons.newspaperVariantMultipleOutline),
                       title: const Text("Wiki"),
                       onTap: () async {
@@ -218,9 +226,9 @@ class _GuildDrawerState extends State<GuildDrawer> with RouteAware {
                                   leading: const Icon(MdiIcons.viewDashboardOutline),
                                   title: const Text("Dashboard"),
                                   onTap: () async {
-                                    await _replaceNavigateTo(context, RoutePages.adminSettings);
+                                    await _replaceNavigateTo(context, RoutePages.admin);
                                   },
-                                  selected: _selectedRoute == RoutePages.adminSettings,
+                                  selected: _selectedRoute == RoutePages.admin,
                                 ),
                                 ListTile(
                                   leading: const Icon(MdiIcons.cogs),
