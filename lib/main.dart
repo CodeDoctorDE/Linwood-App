@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:linwood_app/pages.dart';
@@ -20,6 +21,7 @@ import 'package:linwood_app/services/api_service.dart';
 import 'package:linwood_app/theme.dart';
 import 'package:linwood_app/pages/session/login_mobile.dart'
     if (dart.library.web) 'package:linwood_app/pages/session/login_web.dart';
+import 'package:linwood_app/widgets/wiki/editor.dart';
 
 import 'pages/guild/home.dart';
 import 'pages/wiki/home.dart';
@@ -61,24 +63,25 @@ class MyApp extends StatelessWidget {
                   // is not restarted.
                   primarySwatch: Colors.green,
                   accentColor: Colors.orange,
-
                   fontFamily: "Chilanka",
+                  textTheme: GoogleFonts.chilankaTextTheme(),
                   // This makes the visual density adapt to the platform that you run
                   // the app on. For desktop platforms, the controls will be smaller and
                   // closer together (more dense) than on mobile platforms.
-                  visualDensity: VisualDensity.adaptivePlatformDensity,
+                  // visualDensity: VisualDensity.adaptivePlatformDensity,
                 ),
                 darkTheme: ThemeData(
                   brightness: Brightness.dark,
                   primarySwatch: Colors.green,
                   accentColor: Colors.orange,
-                  fontFamily: "Chilanka",
-                  visualDensity: VisualDensity.adaptivePlatformDensity,
+                  textTheme: GoogleFonts.chilankaTextTheme(),
+                  // visualDensity: VisualDensity.adaptivePlatformDensity,
                 ),
                 routes: {
                   RoutePages.intro: (_) => IntroPage(),
                   RoutePages.login: (_) => LoginPage(),
                   RoutePages.home: (_) => HomePage(),
+                  RoutePages.editor: (_) => EditorPage(),
                   RoutePages.callback: (_) => CallbackPage(),
                   RoutePages.guild: (_) => GuildPage(),
                   RoutePages.adminSettings: (_) => AdminSettingsPage(),

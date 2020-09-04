@@ -1,5 +1,6 @@
 class RoutePages {
   static const String home = '/';
+  static const String editor = '/editor';
   static const String callback = '/callback';
   static const String teams = '/teams';
   static const String guild = '/guild';

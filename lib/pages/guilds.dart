@@ -43,15 +43,19 @@ class GuildsPage extends StatelessWidget {
                                     Text(guild.name),
                                     (guild.added)
                                         ? RaisedButton.icon(
+                                            color: Theme.of(context).primaryColor,
+                                            textColor:
+                                                Theme.of(context).primaryTextTheme.button.color,
                                             onPressed: () => Navigator.of(context)
                                                 .pushNamed(RoutePages.guild, arguments: guild.id),
-                                            icon: Icon(MdiIcons.viewDashboardOutline),
-                                            label: Text("Manage"))
+                                            icon: Icon(MdiIcons.viewDashboardOutline, size: 18),
+                                            label: Text("Manage"),
+                                            highlightColor: Colors.transparent)
                                         : RaisedButton.icon(
                                             onPressed: () {
                                               launch("https://invite.linwood.tk");
                                             },
-                                            icon: Icon(MdiIcons.send),
+                                            icon: Icon(MdiIcons.send, size: 18),
                                             label: Text("Add bot"))
                                   ],
                                 )));
