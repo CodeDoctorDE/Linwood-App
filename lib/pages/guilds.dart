@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:linwood_app/pages.dart';
-import 'package:linwood_app/models/guild.dart';
+import 'package:linwood_app/pages/guild/home.dart';
 import 'package:linwood_app/services/api_service.dart';
 import 'package:linwood_app/widgets/home/scaffold.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -46,8 +46,9 @@ class GuildsPage extends StatelessWidget {
                                             color: Theme.of(context).primaryColor,
                                             textColor:
                                                 Theme.of(context).primaryTextTheme.button.color,
-                                            onPressed: () => Navigator.of(context)
-                                                .pushNamed(RoutePages.guild, arguments: guild.id),
+                                            onPressed: () => Navigator.of(context).pushNamed(
+                                                RoutePages.guild,
+                                                arguments: GuildArguments(guild.id)),
                                             icon: Icon(MdiIcons.viewDashboardOutline, size: 18),
                                             label: Text("Manage"),
                                             highlightColor: Colors.transparent)

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:linwood_app/pages.dart';
-import 'package:linwood_app/pages/callback_web.dart';
 import 'package:linwood_app/pages/guild/admin/prefixes.dart';
 import 'package:linwood_app/pages/guild/admin/settings.dart';
 import 'package:linwood_app/pages/guild/admin/teams.dart';
 import 'package:linwood_app/pages/guilds.dart';
 import 'package:linwood_app/pages/home.dart';
 import 'package:linwood_app/pages/notification.dart';
+import 'package:linwood_app/pages/session/callback_mobile.dart'
+    if (dart.library.html) 'package:linwood_app/pages/session/callback_web.dart';
+
 import 'package:linwood_app/pages/settings.dart';
 import 'package:linwood_app/pages/user.dart';
 import 'package:linwood_app/pages/wikis.dart';
@@ -59,7 +60,6 @@ class MyApp extends StatelessWidget {
                   primarySwatch: Colors.green,
                   accentColor: Colors.orange,
                   fontFamily: "Chilanka",
-                  textTheme: GoogleFonts.chilankaTextTheme(),
                   // This makes the visual density adapt to the platform that you run
                   // the app on. For desktop platforms, the controls will be smaller and
                   // closer together (more dense) than on mobile platforms.
@@ -69,7 +69,7 @@ class MyApp extends StatelessWidget {
                   brightness: Brightness.dark,
                   primarySwatch: Colors.green,
                   accentColor: Colors.orange,
-                  textTheme: GoogleFonts.chilankaTextTheme(),
+                  fontFamily: "Chilanka",
                   // visualDensity: VisualDensity.adaptivePlatformDensity,
                 ),
                 routes: {

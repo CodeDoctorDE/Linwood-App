@@ -1,31 +1,39 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
-// access_token
-// token_type
-// expires_in
-// refresh_token
+class CallbackPage extends StatefulWidget {
+  @override
+  _InAppWebViewPageState createState() => new _InAppWebViewPageState();
+}
 
-class CallbackPage extends StatelessWidget {
+class _InAppWebViewPageState extends State<CallbackPage> {
+  InAppWebViewController webView;
+
   @override
   Widget build(BuildContext context) {
-    var args = window.location.href;
-    Uri uri = Uri.parse(args);
-    var params = uri.queryParameters.entries.toList();
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Tefst"),
-        ),
+        appBar: AppBar(title: Text("Login with discord")),
         body: Container(
-          child: Center(
-              child: ListView.builder(
-            itemBuilder: (context, index) => ListTile(
-              title: Text(params[index].key),
-              subtitle: Text(params[index].value),
+            child: Column(children: <Widget>[
+          Expanded(
+            child: Container(
+              child: InAppWebView(
+                initialUrl: "http://myurl",
+                onWebViewCreated: (InAppWebViewController controller) {
+                  webView = controller;
+                },
+                onLoadStart: (InAppWebViewController controller, String url) {},
+                onLoadStop: (InAppWebViewController controller, String url) {},
+                onReceivedHttpAuthRequest:
+                    (InAppWebViewController controller, HttpAuthChallenge challenge) async {
+                  return HttpAuthResponse(
+                      username: "USERNAME",
+                      password: "PASSWORD",
+                      action: HttpAuthResponseAction.PROCEED);
+                },
+              ),
             ),
-            itemCount: params.length,
-          )),
-        ));
+          ),
+        ])));
   }
 }

@@ -104,63 +104,65 @@ class _WikiDrawerState extends State<WikiDrawer> with RouteAware {
     //     ),
     //   ]))
     // ]));
-    return Drawer(
-        child: Row(children: [
-      Expanded(
-        child: ListView(padding: EdgeInsets.zero, children: [
-          FlatButton.icon(
-            color: Theme.of(context).primaryColor,
-            textTheme: ButtonTextTheme.primary,
-            icon: Icon(MdiIcons.keyboardBackspace),
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-            onPressed: () {
-              if (!widget.permanentlyDisplay) Navigator.pop(context);
-              Navigator.of(context).pop();
-            },
-            label: Text("Back"),
+    return SafeArea(
+        right: false,
+        child: Drawer(
+            child: Row(children: [
+          Expanded(
+            child: ListView(padding: EdgeInsets.zero, children: [
+              FlatButton.icon(
+                color: Theme.of(context).primaryColor,
+                textTheme: ButtonTextTheme.primary,
+                icon: Icon(MdiIcons.keyboardBackspace),
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                onPressed: () {
+                  if (!widget.permanentlyDisplay) Navigator.pop(context);
+                  Navigator.of(context).pop();
+                },
+                label: Text("Back"),
+              ),
+              Container(
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Text(widget.wiki.name, style: Theme.of(context).textTheme.headline5),
+                    Text(widget.wiki.description, style: Theme.of(context).textTheme.subtitle2),
+                  ])),
+              ListTile(
+                leading: const Icon(MdiIcons.homeOutline),
+                title: const Text("Home"),
+                onTap: () async {
+                  await _replaceNavigateTo(context, RoutePages.home);
+                },
+                selected: _selectedRoute == RoutePages.home,
+              ),
+              ListTile(
+                leading: const Icon(MdiIcons.forumOutline),
+                title: const Text("Guilds"),
+                onTap: () async {
+                  await _replaceNavigateTo(context, RoutePages.guilds);
+                },
+                selected: _selectedRoute == RoutePages.guilds,
+              ),
+              ListTile(
+                leading: const Icon(MdiIcons.bellOutline),
+                title: const Text("Notification"),
+                onTap: () async {
+                  await _replaceNavigateTo(context, RoutePages.notification);
+                },
+                selected: _selectedRoute == RoutePages.notification,
+              )
+            ]),
           ),
-          Container(
-              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-              margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-              child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                SizedBox(
-                  height: 50,
-                ),
-                Text(widget.wiki.name, style: Theme.of(context).textTheme.headline5),
-                Text(widget.wiki.description, style: Theme.of(context).textTheme.subtitle2),
-              ])),
-          ListTile(
-            leading: const Icon(MdiIcons.homeOutline),
-            title: const Text("Home"),
-            onTap: () async {
-              await _replaceNavigateTo(context, RoutePages.home);
-            },
-            selected: _selectedRoute == RoutePages.home,
-          ),
-          ListTile(
-            leading: const Icon(MdiIcons.forumOutline),
-            title: const Text("Guilds"),
-            onTap: () async {
-              await _replaceNavigateTo(context, RoutePages.guilds);
-            },
-            selected: _selectedRoute == RoutePages.guilds,
-          ),
-          ListTile(
-            leading: const Icon(MdiIcons.bellOutline),
-            title: const Text("Notification"),
-            onTap: () async {
-              await _replaceNavigateTo(context, RoutePages.notification);
-            },
-            selected: _selectedRoute == RoutePages.notification,
-          )
-        ]),
-      ),
-      if (widget.permanentlyDisplay)
-        const VerticalDivider(
-          width: 5,
-          thickness: 0.5,
-        )
-    ]));
+          if (widget.permanentlyDisplay)
+            const VerticalDivider(
+              width: 5,
+              thickness: 0.5,
+            )
+        ])));
   }
 
   /// Closes the drawer if applicable (which is only when it's not been displayed permanently) and navigates to the specified route
