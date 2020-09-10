@@ -112,7 +112,7 @@ class _GuildDrawerState extends State<GuildDrawer> with RouteAware {
               color: Theme.of(context).primaryColor,
               textTheme: ButtonTextTheme.primary,
               icon: Icon(MdiIcons.keyboardBackspace),
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
               onPressed: () {
                 if (!widget.permanentlyDisplay) Navigator.pop(context);
                 Navigator.of(context).pop();
