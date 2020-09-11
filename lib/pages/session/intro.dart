@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../home.dart';
 
@@ -131,10 +132,14 @@ class _WelcomePageState extends State<WelcomePage> {
           ),
           Align(
               alignment: Alignment.bottomLeft,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset("assets/icon.png", height: 50),
-              )),
+              child: GestureDetector(
+                  onTap: () {
+                    launch("https://linwood.tk", forceWebView: true);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset("assets/icon.png", height: 50),
+                  ))),
           Align(
               alignment: Alignment.bottomCenter,
               child: Container(
