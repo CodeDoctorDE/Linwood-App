@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:linwood_app/pages.dart';
-import 'package:linwood_app/pages/guild/user/birthday/create.dart';
+import 'package:linwood_app/pages/guild/user/birthday.dart';
 import 'package:linwood_app/pages/guild/user/calendar.dart';
 import 'package:linwood_app/pages/guild/admin/prefixes.dart';
 import 'package:linwood_app/pages/guild/admin/settings.dart';
@@ -85,7 +85,7 @@ class MyApp extends StatelessWidget {
                   RoutePages.callback: (_) => CallbackPage(),
                   RoutePages.guild: (_) => GuildPage(),
                   RoutePages.adminSettings: (_) => AdminSettingsPage(),
-                  RoutePages.createBirthday: (_) => CreateBirthdayPage(),
+                  RoutePages.createBirthday: (_) => BirthdayPage(),
                   RoutePages.calendar: (_) => CalendarPage(),
                   RoutePages.prefixes: (_) => PrefixesPage(),
                   RoutePages.guilds: (_) => GuildsPage(),

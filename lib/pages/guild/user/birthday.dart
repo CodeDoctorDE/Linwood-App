@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class CreateBirthdayPage extends StatelessWidget {
+class BirthdayPage extends StatelessWidget {
+  final bool editing;
+
+  const BirthdayPage({Key key, this.editing}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,6 +15,7 @@ class CreateBirthdayPage extends StatelessWidget {
         children: [
           ListTile(
               title: Text("User"),
+              onTap: editing ? () {} : null,
               subtitle: RichText(
                   text: TextSpan(
                       text: "Current: ",
@@ -23,15 +28,17 @@ class CreateBirthdayPage extends StatelessWidget {
           TextFormField(
               decoration: InputDecoration(hintText: "Description"),
               maxLength: 500,
+              readOnly: !editing,
               keyboardType: TextInputType.multiline),
-          TextFormField(
-              decoration: InputDecoration(hintText: "Message"),
-              maxLength: 500,
-              keyboardType: TextInputType.multiline)
+          if (editing)
+            TextFormField(
+                decoration: InputDecoration(hintText: "Message"),
+                maxLength: 500,
+                keyboardType: TextInputType.multiline)
         ],
       )),
       floatingActionButton: FloatingActionButton(
-        child: Icon(MdiIcons.send),
+        child: Icon(MdiIcons.check),
         onPressed: () {},
       ),
     );

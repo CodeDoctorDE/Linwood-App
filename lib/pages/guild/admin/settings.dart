@@ -54,9 +54,9 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                             width: 150,
                             child: DropdownButtonFormField<String>(
                                 items: languages.map((String val) {
-                                  return new DropdownMenuItem<String>(
+                                  return DropdownMenuItem<String>(
                                     value: val,
-                                    child: new Text(val),
+                                    child: Text(val),
                                   );
                                 }).toList(),
                                 value: _selectedLanguage,

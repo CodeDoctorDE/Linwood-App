@@ -57,7 +57,7 @@ class _WelcomePageState extends State<WelcomePage> {
       "image": MdiIcons.lockOutline
     }
   ];
-  final _pageViewController = new PageController();
+  final _pageViewController = PageController();
   double _currentPage = 0;
   List<Widget> indicator() => List<Widget>.generate(
       _items.length,

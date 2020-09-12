@@ -9,13 +9,13 @@ class ApiService {
   }
 
   fetchUser(int guildId) {
-    return Future.delayed(new Duration(seconds: 1), () => Guild());
+    return Future.delayed(Duration(seconds: 1), () => Guild());
   }
 
-  fetchMember(String id, int teamId) {}
+  fetchMember(int memberId, int guildId) {}
   Future<List<Guild>> fetchGuilds() async {
     return Future.delayed(
-        new Duration(seconds: 1),
+        Duration(seconds: 1),
         () => [
               Guild(
                   id: "735424757142519848",
@@ -34,7 +34,7 @@ class ApiService {
   }
 
   Future<List<Wiki>> fetchWikis() {
-    return Future.delayed(new Duration(seconds: 1),
+    return Future.delayed(Duration(seconds: 1),
         () => [Wiki(name: "Example wiki", description: "This is a description of a wiki")]);
   }
 
@@ -45,6 +45,6 @@ class ApiService {
 
   Future<List<WikiElement>> fetchWikiElements() {
     return Future.delayed(
-        new Duration(seconds: 1), () => [WikiElement(title: "Test", body: "hi :D", path: "Test/")]);
+        Duration(seconds: 1), () => [WikiElement(title: "Test", body: "hi :D", path: "Test/")]);
   }
 }

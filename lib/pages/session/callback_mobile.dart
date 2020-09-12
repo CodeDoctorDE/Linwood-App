@@ -3,7 +3,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 class CallbackPage extends StatefulWidget {
   @override
-  _InAppWebViewPageState createState() => new _InAppWebViewPageState();
+  _InAppWebViewPageState createState() => _InAppWebViewPageState();
 }
 
 class _InAppWebViewPageState extends State<CallbackPage> {

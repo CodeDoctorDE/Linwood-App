@@ -3,7 +3,7 @@ import 'package:linwood_app/models/member.dart';
 import 'package:linwood_app/services/api_service.dart';
 
 class User {
-  final String id;
+  final int id;
   final String name;
   final String descriminator;
   String get tag => name + "#" + descriminator;

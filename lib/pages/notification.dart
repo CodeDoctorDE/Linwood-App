@@ -12,7 +12,7 @@ class _NotificationPageState extends State<NotificationPage> {
       "title": "is a title",
       "text": "Notification - 1",
       "unread": true,
-      "time": DateTime.now().subtract(new Duration(minutes: 5))
+      "time": DateTime.now().subtract(Duration(minutes: 5))
     },
     {
       "title": "we lit",

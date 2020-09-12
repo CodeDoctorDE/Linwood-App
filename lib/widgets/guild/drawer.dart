@@ -112,7 +112,7 @@ class _GuildDrawerState extends State<GuildDrawer> with RouteAware {
               color: Theme.of(context).primaryColor,
               textTheme: ButtonTextTheme.primary,
               icon: Icon(MdiIcons.keyboardBackspace),
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
               onPressed: () {
                 if (!widget.permanentlyDisplay) Navigator.pop(context);
                 Navigator.of(context).pop();
@@ -220,9 +220,9 @@ class _GuildDrawerState extends State<GuildDrawer> with RouteAware {
                                       leading: const Icon(MdiIcons.viewDashboardOutline),
                                       title: const Text("Dashboard"),
                                       onTap: () async {
-                                        await _replaceNavigateTo(context, RoutePages.adminSettings);
+                                        await _replaceNavigateTo(context, RoutePages.admin);
                                       },
-                                      selected: _selectedRoute == RoutePages.adminSettings,
+                                      selected: _selectedRoute == RoutePages.admin,
                                     ),
                                     ListTile(
                                       leading: const Icon(MdiIcons.cogs),
