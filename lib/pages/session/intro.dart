@@ -1,8 +1,12 @@
+import 'package:flutter/rendering.dart';
+import 'package:get_it/get_it.dart';
+import 'package:linwood_app/pages.dart';
 import 'package:linwood_app/pages/session/login_web.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
+import 'package:linwood_app/services/config_service.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -42,7 +46,8 @@ class _WelcomePageState extends State<WelcomePage> {
   static final List _items = [
     {
       "header": "Welcome!",
-      "description": "Swipe to get an introduction. Click on skip to skip it.",
+      "description":
+          "Swipe to get an introduction. Click on skip to skip it. ${GetIt.I.get<ConfigService>().loginLink}",
       "image": MdiIcons.robot
     },
     {
@@ -132,14 +137,16 @@ class _WelcomePageState extends State<WelcomePage> {
           ),
           Align(
               alignment: Alignment.bottomLeft,
-              child: GestureDetector(
-                  onTap: () {
-                    launch("https://linwood.tk", forceWebView: true);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.asset("assets/icon.png", height: 50),
-                  ))),
+              child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: GestureDetector(
+                      onTap: () {
+                        launch("https://linwood.tk", forceWebView: true);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset("assets/icon.png", height: 50),
+                      )))),
           Align(
               alignment: Alignment.bottomCenter,
               child: Container(
@@ -165,8 +172,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         )
                       : RaisedButton(
                           onPressed: () {
-                            Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(builder: (context) => LoginPage()));
+                            Navigator.of(context).pushReplacementNamed(RoutePages.login);
                           },
                           child: Text("START"),
                         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:global_configuration/global_configuration.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:linwood_app/pages.dart';
@@ -19,6 +20,7 @@ import 'package:linwood_app/pages/settings.dart';
 import 'package:linwood_app/pages/user.dart';
 import 'package:linwood_app/pages/wikis.dart';
 import 'package:linwood_app/services/api_service.dart';
+import 'package:linwood_app/services/config_service.dart';
 import 'package:linwood_app/theme.dart';
 import 'package:linwood_app/pages/session/login_mobile.dart'
     if (dart.library.html) 'package:linwood_app/pages/session/login_web.dart';
@@ -29,7 +31,9 @@ import 'pages/wiki/home.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await GlobalConfiguration().loadFromPathIntoKey("assets/config.json", "config");
   GetIt.I.registerSingleton(ApiService());
+  GetIt.I.registerSingleton(ConfigService());
   await Hive.initFlutter();
   await Hive.openBox('settings');
   final themeController = ThemeController();
