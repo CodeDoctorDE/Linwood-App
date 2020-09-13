@@ -1,5 +1,6 @@
 {
     "client-id":"",
     "permissions":1,
-    "api":"https://api.linwood.tk/v0"
+    "api":"https://api.linwood.tk/v0",
+    "discord":"https://discord.com"
 }
