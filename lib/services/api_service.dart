@@ -1,8 +1,17 @@
+import 'package:get_it/get_it.dart';
 import 'package:linwood_app/models/guild.dart';
 import 'package:linwood_app/models/wiki.dart';
 import 'package:linwood_app/models/wiki_element.dart';
+import 'package:http/http.dart' as http;
+
+import 'config_service.dart';
 
 class ApiService {
+  Future<dynamic> fetchInfo() async {
+    var response = await http.get(Uri.https(GetIt.I.get<ConfigService>().api, ""));
+    return response;
+  }
+
   Future<Guild> fetchGuild(int id) async {
     var guilds = await fetchGuilds();
     return guilds[id];

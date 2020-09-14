@@ -14,7 +14,8 @@ class ThemeController extends ChangeNotifier {
     notifyListeners();
   }
 
-  set currentThemeMode(ThemeMode themeMode) => currentTheme = EnumToString.parse(themeMode);
+  set currentThemeMode(ThemeMode themeMode) =>
+      currentTheme = EnumToString.convertToString(themeMode);
 
   ThemeMode get currentThemeMode => EnumToString.fromString(ThemeMode.values, currentTheme);
 
