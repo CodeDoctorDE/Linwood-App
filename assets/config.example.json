@@ -1,9 +1,9 @@
 {
     "client_id":"680346829489307726",
     "permissions":502656087,
-    "api":"https//api.linwood.tk/v0",
+    "api":"https//api.linwood.tk",
     "discord_uri":"discord.com",
-    "discord_path":"/api/oauth2/authorize",
+    "discord_path":"/api/v6",
     "redirect_uri":"https://app.linwood.tk/#/callback",
     "scope":"guilds email"
 }
