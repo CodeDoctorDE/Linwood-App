@@ -135,7 +135,7 @@ class _TeamDrawerState extends State<TeamDrawer> with RouteAware {
                   SizedBox(
                     height: 50,
                   ),
-                  Text("GuildTitle", style: Theme.of(context).textTheme.headline5),
+                  Text("TeamTitle", style: Theme.of(context).textTheme.headline5),
                   RichText(
                     text: TextSpan(
                       style: Theme.of(context).textTheme.bodyText2,
@@ -167,15 +167,7 @@ class _TeamDrawerState extends State<TeamDrawer> with RouteAware {
                         ),
                         ListTile(
                           leading: const Icon(MdiIcons.podium),
-                          title: const Text("Karma"),
-                          onTap: () async {
-                            await _replaceNavigateTo(context, RoutePages.notification);
-                          },
-                          selected: _selectedRoute == RoutePages.notification,
-                        ),
-                        ListTile(
-                          leading: const Icon(MdiIcons.newspaperVariantMultipleOutline),
-                          title: const Text("Wiki"),
+                          title: const Text("Leaderboard"),
                           onTap: () async {
                             await _replaceNavigateTo(context, RoutePages.notification);
                           },
@@ -183,7 +175,15 @@ class _TeamDrawerState extends State<TeamDrawer> with RouteAware {
                         ),
                         ListTile(
                           leading: const Icon(MdiIcons.accountMultipleOutline),
-                          title: const Text("Teams"),
+                          title: const Text("Members"),
+                          onTap: () async {
+                            await _replaceNavigateTo(context, RoutePages.notification);
+                          },
+                          selected: _selectedRoute == RoutePages.notification,
+                        ),
+                        ListTile(
+                          leading: const Icon(MdiIcons.forumOutline),
+                          title: const Text("Guilds"),
                           onTap: () async {
                             await _replaceNavigateTo(context, RoutePages.teams);
                           },
@@ -219,6 +219,14 @@ class _TeamDrawerState extends State<TeamDrawer> with RouteAware {
                                     ListTile(
                                       leading: const Icon(MdiIcons.viewDashboardOutline),
                                       title: const Text("Dashboard"),
+                                      onTap: () async {
+                                        await _replaceNavigateTo(context, RoutePages.admin);
+                                      },
+                                      selected: _selectedRoute == RoutePages.admin,
+                                    ),
+                                    ListTile(
+                                      leading: const Icon(MdiIcons.bellOutline),
+                                      title: const Text("Global"),
                                       onTap: () async {
                                         await _replaceNavigateTo(context, RoutePages.admin);
                                       },
