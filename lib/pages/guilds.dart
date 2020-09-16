@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:linwood_app/pages.dart';
-import 'package:linwood_app/pages/guild/home.dart';
+import 'package:linwood_app/pages/guild/user/home.dart';
 import 'package:linwood_app/services/api_service.dart';
 import 'package:linwood_app/widgets/home/scaffold.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';

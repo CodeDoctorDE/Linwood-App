@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:linwood_app/widgets/guild/drawer.dart';
 import 'package:linwood_app/widgets/team/drawer.dart';
 
 /// A responsive scaffold for our application.

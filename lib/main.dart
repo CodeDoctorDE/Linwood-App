@@ -26,7 +26,7 @@ import 'package:linwood_app/pages/session/login_mobile.dart'
     if (dart.library.html) 'package:linwood_app/pages/session/login_web.dart';
 import 'package:linwood_app/widgets/wiki/editor.dart';
 
-import 'pages/guild/home.dart';
+import 'pages/guild/user/home.dart';
 import 'pages/wiki/home.dart';
 
 void main() async {
