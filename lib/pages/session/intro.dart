@@ -2,12 +2,8 @@ import 'package:flutter/rendering.dart';
 import 'package:linwood_app/pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'package:http/http.dart' as http;
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../home.dart';
 
 class IntroPage extends StatefulWidget {
   @override
@@ -17,20 +13,7 @@ class IntroPage extends StatefulWidget {
 class _IntroPageState extends State<IntroPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: FutureBuilder<Response>(
-      future: http.get("https://api.linwood.tk"),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting)
-          return Center(child: CircularProgressIndicator());
-        else {
-          if (snapshot.hasData)
-            Navigator.of(context)
-                .pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
-          return WelcomePage();
-        }
-      },
-    ));
+    return Scaffold(body: WelcomePage());
   }
 }
 

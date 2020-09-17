@@ -12,18 +12,20 @@ import 'package:linwood_app/pages/guild/admin/teams.dart';
 import 'package:linwood_app/pages/guilds.dart';
 import 'package:linwood_app/pages/home.dart';
 import 'package:linwood_app/pages/notification.dart';
-import 'package:linwood_app/pages/session/callback_mobile.dart'
-    if (dart.library.html) 'package:linwood_app/pages/session/callback_web.dart';
+import 'package:linwood_app/pages/session/callback_stub.dart'
+    if (dart.library.html) 'package:linwood_app/pages/session/callback_web.dart'
+    if (dart.library.io) 'package:linwood_app/pages/session/callback_mobile.dart';
 
 import 'package:linwood_app/pages/session/intro.dart';
+import 'package:linwood_app/pages/session/login_stub.dart'
+    if (dart.library.html) 'package:linwood_app/pages/session/login_web.dart'
+    if (dart.library.io) 'package:linwood_app/pages/session/login_mobile.dart';
 import 'package:linwood_app/pages/settings.dart';
 import 'package:linwood_app/pages/user.dart';
 import 'package:linwood_app/pages/wikis.dart';
 import 'package:linwood_app/services/api_service.dart';
 import 'package:linwood_app/services/config_service.dart';
 import 'package:linwood_app/theme.dart';
-import 'package:linwood_app/pages/session/login_mobile.dart'
-    if (dart.library.html) 'package:linwood_app/pages/session/login_web.dart';
 import 'package:linwood_app/widgets/wiki/editor.dart';
 
 import 'pages/guild/user/home.dart';

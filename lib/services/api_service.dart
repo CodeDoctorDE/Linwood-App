@@ -8,8 +8,12 @@ import 'config_service.dart';
 
 class ApiService {
   Future<dynamic> fetchInfo() async {
-    var response = await http.get(Uri.https(GetIt.I.get<ConfigService>().api, "/").toString());
-    return response;
+    try {
+      var response = await http.get(GetIt.I.get<ConfigService>().api);
+      return response;
+    } catch (e) {
+      return null;
+    }
   }
 
   Future<Guild> fetchGuild(int id) async {

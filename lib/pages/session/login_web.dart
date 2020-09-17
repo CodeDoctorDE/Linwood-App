@@ -12,35 +12,35 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  Future<void> _fetchInfo(BuildContext context) async {
+    var data = await GetIt.I.get<ApiService>().fetchInfo();
+    var error = false;
+    try {
+      error = data['name'] == "Linwood" && data['api-version'].contains(0);
+    } catch (e) {
+      error = true;
+    }
+    if (error)
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+                title: Text("Error while connecting to the api"),
+                content: Text("Please check your internet connection or try it again later!"),
+              ));
+    else
+      window.location.replace(GetIt.I.get<ConfigService>().loginLink.toString());
+  }
+
+  @override
+  Future<void> initState() async {
+    super.initState();
+    Future.delayed(Duration.zero, () {
+      _fetchInfo(context);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Login")),
-      body: FutureBuilder(
-        future: GetIt.I.get<ApiService>().fetchInfo(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            var data = snapshot.data;
-            var error = false;
-            try {
-              error = data['name'] == "Linwood" && data['api-version'].contains(0);
-            } catch (e) {
-              error = true;
-            }
-            if (error)
-              showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                        title: Text("Error while connecting to the api"),
-                        content:
-                            Text("Please check your internet connection or try it again later!"),
-                      ));
-            else
-              window.location.replace(GetIt.I.get<ConfigService>().loginLink.toString());
-          }
-          return LinearProgressIndicator();
-        },
-      ),
-    );
+    return Scaffold(appBar: AppBar(title: Text("Login")), body: LinearProgressIndicator());
   }
 }

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:linwood_app/widgets/guild/drawer.dart';
 
-mixin ResponsiveDrawer implements StatelessWidget {
-  bool permanentlyDisplay;
+mixin ResponsiveDrawer {
+  bool permanentlyDisplay = false;
 }
 
 /// A responsive scaffold for our application.
@@ -19,7 +18,7 @@ class ResponsiveScaffold extends StatelessWidget {
       : super(key: key);
   final List<Widget> actions;
 
-  final ResponsiveDrawer drawer;
+  final Widget drawer;
   final Widget body;
   final FloatingActionButton floatingActionButton;
 
@@ -32,9 +31,18 @@ class ResponsiveScaffold extends StatelessWidget {
     return Row(
       children: [
         if (!displayMobileLayout)
-          const GuildDrawer(
-            permanentlyDisplay: true,
-          )..permanentlyDisplay = true,
+          SafeArea(
+            right: false,
+            child: Row(
+              children: [
+                Expanded(child: drawer),
+                const VerticalDivider(
+                  width: 5,
+                  thickness: 0.5,
+                )
+              ],
+            ),
+          ),
         Expanded(
           child: Scaffold(
             appBar: AppBar(
@@ -44,11 +52,7 @@ class ResponsiveScaffold extends StatelessWidget {
               actions: actions,
               bottom: bottom,
             ),
-            drawer: displayMobileLayout
-                ? const GuildDrawer(
-                    permanentlyDisplay: false,
-                  )
-                : null,
+            drawer: displayMobileLayout ? drawer : null,
             body: body,
             floatingActionButton: floatingActionButton,
           ),
