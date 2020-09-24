@@ -2,6 +2,7 @@ import 'package:flutter/rendering.dart';
 import 'package:linwood_app/pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:linwood_app/services/args.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -95,7 +96,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         child: Container(
                             padding: EdgeInsets.symmetric(horizontal: 30.0),
                             child: Column(children: <Widget>[
-                              Text(item['header'],
+                              Text(item['header'] + ArgumentsFetcher.getArguments(context),
                                   style: TextStyle(
                                       fontSize: 50.0,
                                       fontWeight: FontWeight.w300,
