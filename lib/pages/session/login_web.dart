@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   @override
-  Future<void> initState() async {
+  void initState() {
     super.initState();
     Future.delayed(Duration.zero, () {
       _fetchInfo(context);

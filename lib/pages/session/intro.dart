@@ -96,7 +96,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         child: Container(
                             padding: EdgeInsets.symmetric(horizontal: 30.0),
                             child: Column(children: <Widget>[
-                              Text(item['header'] + ArgumentsFetcher.getArguments(context),
+                              Text(item['header'],
                                   style: TextStyle(
                                       fontSize: 50.0,
                                       fontWeight: FontWeight.w300,
