@@ -22,8 +22,17 @@ class _LoginPageState extends State<LoginPage> {
     }
     if (error)
       showDialog(
+          barrierDismissible: false,
           context: context,
           builder: (context) => AlertDialog(
+                actions: [
+                  FlatButton(
+                      onPressed: () {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (BuildContext context) => super.widget));
+                      },
+                      child: Text("RELOAD"))
+                ],
                 title: Text("Error while connecting to the api"),
                 content: Text("Please check your internet connection or try it again later!"),
               ));
