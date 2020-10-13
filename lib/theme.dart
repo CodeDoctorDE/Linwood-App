@@ -36,8 +36,3 @@ class ThemeControllerProvider extends InheritedWidget {
   @override
   bool updateShouldNotify(ThemeControllerProvider old) => controller != old.controller;
 }
-
-extension ThemeModeIndex on ThemeMode {
-  // Overload the [] getter to get the name of the fruit.
-  operator [](String key) => ThemeMode.values.firstWhere((e) => e.toString() == 'ThemeMode.' + key);
-}

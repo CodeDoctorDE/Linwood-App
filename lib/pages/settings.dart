@@ -35,7 +35,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               trailing: Icon(MdiIcons.chevronRight,
                                   color: Theme.of(context).primaryIconTheme.color,
                                   size: Theme.of(context).primaryIconTheme.size),
-                              onTap: () => _openThemeModal())
+                              onTap: _openThemeModal)
                         ]))),
                 Card(
                     color: Theme.of(context).primaryColor,
